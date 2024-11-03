@@ -2,9 +2,9 @@ import PropTypes from "prop-types";
 
 function Image({ image, title }) {
   return (
-    <div>
+    <>
       <img src={image} alt={title} />
-    </div>
+    </>
   );
 }
 

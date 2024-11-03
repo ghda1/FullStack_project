@@ -1,1 +1,30 @@
-/* styling for footer here */
+ /* styling for footer here */
+
+footer {
+  padding: 1rem;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5rem;
+  background-color: #e1dede;
+  font-size: 18px;
+}
+
+footer a {
+  text-decoration: none;
+  color: #6e6d6d;
+  transition: color 0.3s ease-in-out;
+  margin-right: 2rem;
+  
+}
+
+footer a:hover {
+  color: #f7f4f4;
+}
+
+.copyright {
+  font-size: 15px;
+  color: #6e6d6d;
+  margin-top: 1rem;
+} 

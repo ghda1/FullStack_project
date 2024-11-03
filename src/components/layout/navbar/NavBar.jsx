@@ -11,13 +11,13 @@ function NavBar() {
     <>
       <nav id="nav">
         <div className="left">
-          <Image className="logo" image={logo} title="logo" />
           <Link to="/">Home</Link>
-          <Link to="/">Profile</Link>
+          <Link to="/profile">Profile</Link>
         </div>
+        <img className="logo" src={logo} title="logo" />
         <div className="right">
-          <Link to="/SignIn">Log In</Link>
-          <ShoppingCartIcon className="cart-logo" />
+          <Link to="/login">Log In</Link>
+          <ShoppingCartIcon className="cart-icon" />
         </div>
       </nav>
       <Outlet />

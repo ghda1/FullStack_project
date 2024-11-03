@@ -1,0 +1,10 @@
+.srearch-div{
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    display: flex;
+}
+.search{
+    margin: 1rem;
+    border-radius: 10px;
+}
