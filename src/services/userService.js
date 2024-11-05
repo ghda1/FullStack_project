@@ -18,6 +18,5 @@ export const registerUser = async (userData) => {
       "Content-Type": "application/json",
     },
   });
-  console.log(res.data);
   return res.data;
 };

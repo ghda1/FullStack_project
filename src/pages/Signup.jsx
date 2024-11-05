@@ -1,9 +1,7 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Card from "react-bootstrap/Card";
 
 import { signUpFields } from "../components/user/signUpFields";
-import { UserContext } from "../contexts/UserContext";
 import FormGroup from "../components/form/FormGroup";
 import FormButton from "../components/form/FormButton";
 import { registerUser } from "../services/userService";
@@ -29,7 +27,8 @@ export default function Signup() {
   };
 
   const handelAddUser = async (newUser) => {
-    await registerUser(newUser);
+    const res = await registerUser(newUser);
+    return res;
   };
 
   const isValidateForm = () => {
@@ -58,7 +57,7 @@ export default function Signup() {
     setUser(initialValue);
     setErrors({});
   };
-  const submitHandler = (event) => {
+  const submitHandler = async (event) => {
     event.preventDefault();
 
     if (isValidateForm()) {
@@ -70,16 +69,16 @@ export default function Signup() {
         phone: user.phone,
         isAdmin: false,
       };
-      handelAddUser(newUser);
+      const res = await handelAddUser(newUser);
       restValues();
-      navigate("/login");
+      navigate("/addressInfo", { state: res });
     }
   };
   return (
     <div className="signUpForm">
+      <h2 className="signUpTitle">Sign Up</h2>
       <form className="form" onSubmit={submitHandler}>
         {signUpFields.map((field) => {
-          console.log(errors[field.name]);
           return (
             <FormGroup
               key={field.id}

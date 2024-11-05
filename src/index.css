@@ -1,5 +1,15 @@
 .signUpForm {
-  margin: 4rem;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 2rem;
+}
+
+.signUpTitle {
+  text-align: center;
+  font-size: 24px; 
+  margin-bottom: 20px;
+  margin-right: 3rem;
 }
 
 form {
@@ -54,6 +64,6 @@ form button {
 form button:hover {
   background-color: #9c9b9b;
 }
-.errors{
-    color: rgb(244, 132, 132);
+.errors {
+  color: rgb(244, 132, 132);
 }
