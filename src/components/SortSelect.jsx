@@ -1,5 +1,6 @@
 import { Box, FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 import { useContext, useState } from "react";
+
 import { ProductContext } from "../contexts/ProductContext";
 
 function SortSelect() {

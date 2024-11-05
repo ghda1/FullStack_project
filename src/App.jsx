@@ -8,6 +8,7 @@ import Signup from "./pages/Signup";
 import Profile from "./pages/Profile";
 import { ProductProvider } from "./contexts/ProductContext";
 import ProductDetails from "./pages/ProductDetails";
+import { UserProvider } from "./contexts/UserContext";
 
 function App() {
   const router = createBrowserRouter([
@@ -41,7 +42,9 @@ function App() {
 
   return (
     <ProductProvider>
-      <RouterProvider router={router} />
+      <UserProvider>
+        <RouterProvider router={router} />
+      </UserProvider>
     </ProductProvider>
   );
 }

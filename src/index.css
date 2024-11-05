@@ -1,0 +1,59 @@
+.signUpForm {
+  margin: 4rem;
+}
+
+form {
+  margin-top: 2rem;
+  max-width: 400px;
+  padding: 20px;
+  margin: 0 auto;
+  background-color: #f3f3f3;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+}
+
+form div {
+  margin-bottom: 15px;
+}
+
+form label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #333;
+}
+form input {
+  width: 95%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #333;
+}
+
+form input:focus {
+  border-color: #130a0a;
+  outline: none;
+}
+
+form button {
+  width: 95%;
+  padding: 10px;
+  background-color: #b7b7b7;
+  color: rgb(15, 14, 14);
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-bottom: 2rem;
+  margin-top: 1rem;
+}
+
+form button:hover {
+  background-color: #9c9b9b;
+}
+.errors{
+    color: rgb(244, 132, 132);
+}
