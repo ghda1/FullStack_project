@@ -1,8 +1,8 @@
 import { Box, FormControl, InputLabel, MenuItem, Select } from "@mui/material";
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { ProductContext } from "../contexts/ProductContext";
 
-function Sorting() {
+function SortSelect() {
   const { setSortBy, setSortOrder } = useContext(ProductContext);
 
   const { sortChoice, setSortChoice } = useState();
@@ -48,4 +48,4 @@ function Sorting() {
   );
 }
 
-export default Sorting;
+export default SortSelect;

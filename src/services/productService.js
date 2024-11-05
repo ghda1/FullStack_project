@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseURL = "http://localhost:5125/api/v1/products";
+const baseURL = import.meta.env.VITE_BASE_PRODUCT_URL;
 
 export const getAllProducts = async (
   pageNumber = 1,
