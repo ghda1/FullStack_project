@@ -1,15 +1,21 @@
 import axios from "axios";
 
-export const getAllProducts = async (searchQuery) => {
-  console.log(searchQuery);
+const baseURL = "http://localhost:5125/api/v1/products";
+
+export const getAllProducts = async (
+  pageNumber = 1,
+  pageSize = 8,
+  searchQuery = "",
+  sortBy = "title",
+  sortOrder = "asc"
+) => {
   const res = await axios(
-    `http://localhost:5125/api/v1/products?searchQuery=${searchQuery}`
+    `${baseURL}?searchQuery=${searchQuery}&pageNumber=${pageNumber}&pageSize=${pageSize}&sortBy=${sortBy}&sortOrder=${sortOrder}`
   );
   return res.data.data;
 };
 
 export const getSingleProduct = async (productId) => {
-  const res = await axios(`http://localhost:5125/api/v1/products/${productId}`);
-  console.log(res.data.data);
+  const res = await axios(`${baseURL}/${productId}`);
   return res.data.data;
 };

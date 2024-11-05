@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 function Price({ price }) {
   return (
     <>
-      <h4 id="price">Price: {price} SAR</h4>
+      <h4 className="productPrice">Price: {price} SAR</h4>
     </>
   );
 }

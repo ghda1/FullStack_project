@@ -1,34 +1,17 @@
-import React, { useContext } from "react";
+import PaginationComponent from "../components/PaginationComponent";
 import Products from "../components/products/Products";
-import { ProductContext } from "../contexts/ProductContext";
+import SearchInput from "../components/SearchInput";
+import Sorting from "../components/Sorting";
 
 function Home() {
-  const { setSearchQuery, isLoading } = useContext(ProductContext);
-
-  if (isLoading) {
-    return <h2>Products is Loading...</h2>;
-  }
-
-  const handleSearching = (event) => {
-    event.preventDefault();
-    setTimeout(() => {
-      const searchTerm = event.target.value.toLowerCase();
-      setSearchQuery(searchTerm);
-    }, 2000);
-  };
-
   return (
     <>
-      <div className="srearch-div">
-        <input
-          className="search"
-          type="text"
-          id="search-task"
-          placeholder="Search for product.."
-          onChange={handleSearching}
-        />
+      <div className="search-sort">
+        <SearchInput />
+        <Sorting />
       </div>
       <Products />
+      <PaginationComponent />
     </>
   );
 }

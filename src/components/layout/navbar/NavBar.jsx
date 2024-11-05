@@ -4,7 +4,6 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import logo from "/images/Logo.png";
 
 import "./NavBar.css";
-import Image from "../../Image";
 
 function NavBar() {
   return (

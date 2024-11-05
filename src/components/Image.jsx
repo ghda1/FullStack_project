@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 function Image({ image, title }) {
   return (
     <>
-      <img src={image} alt={title} />
+      <img className="productImage" src={image} alt={title} />
     </>
   );
 }

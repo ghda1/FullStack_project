@@ -14,8 +14,8 @@ function ProductDetails() {
     useContext(ProductContext);
 
   const { productId } = useParams();
-
   const [product, setProduct] = useState(null);
+
   const fetchData = async (productId) => {
     try {
       setIsLoading(true);
@@ -31,23 +31,21 @@ function ProductDetails() {
     fetchData(productId);
   }, [productId]);
 
-  if (!product) {
-    return <p>Product is not available.</p>;
-  }
-
   if (isLoading) {
     return <p>Product is Loading...</p>;
   }
-
+  if (!product) {
+    return <p>Product is not available.</p>;
+  }
   if (error) {
-    return <p>error</p>;
+    return <p>{error.message}</p>;
   }
 
   return (
-    <Container className="details-card">
-      <Card className="card">
+    <Container>
+      <Card>
         <Image image={product.image} title={product.title} />
-        <Card.Body>
+        <Card.Body className="productInfo">
           <Title title={product.title} />
           <Price price={product.price} />
         </Card.Body>
