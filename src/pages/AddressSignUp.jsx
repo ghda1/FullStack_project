@@ -77,7 +77,7 @@ export default function AddressSignUp() {
       };
       handelAddAddress(newAddress);
       restValues();
-      navigate("/");
+      navigate("/login");
     }
   };
   return (

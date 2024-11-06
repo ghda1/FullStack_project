@@ -3,18 +3,19 @@ import { useParams } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import { Container } from "react-bootstrap";
 
-import Image from "../components/Image";
-import Title from "../components/Title";
-import Price from "../components/Price";
+import "../components/products/ProductDetails.css";
 import { ProductContext } from "../contexts/ProductContext";
 import { getSingleProduct } from "../services/ProductService";
+import Material from "../components/Material";
+import Colors from "../components/Colors";
+import Sizes from "../components/Sizes";
 
 function ProductDetails() {
   const { isLoading, setIsLoading, error, setError } =
     useContext(ProductContext);
 
   const { productId } = useParams();
-  const [product, setProduct] = useState(null);
+  const [product, setProduct] = useState();
 
   const fetchData = async (productId) => {
     try {
@@ -40,14 +41,17 @@ function ProductDetails() {
   if (error) {
     return <p>{error.message}</p>;
   }
-
+  const { image, title, price, colors, sizes, material } = product;
   return (
-    <Container>
-      <Card>
-        <Image image={product.image} title={product.title} />
-        <Card.Body className="productInfo">
-          <Title title={product.title} />
-          <Price price={product.price} />
+    <Container className="productDetailsContainer">
+      <Card className="productDetailsCard">
+        <img className="productDetailsImage" src={image} alt={title} />
+        <Card.Body className="productDetailsInfo">
+          <h3 className="productDetailsTitle">{title}</h3>
+          <Material material={material} />
+          <Sizes sizes={sizes} />
+          <Colors colors={colors} />
+          <h4 className="productPrice">Price: {price} SAR</h4>
         </Card.Body>
       </Card>
     </Container>

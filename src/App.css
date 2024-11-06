@@ -1,9 +1,15 @@
+.search-sort{
+  display: flex;
+    justify-content: center;
+  align-items: center;
+  align-content: center;
+}
 .srearch-div {
   justify-content: center;
   align-items: center;
   align-content: center;
   display: flex;
-  margin: 3rem;
+  margin: 2rem;
 }
 .search {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -15,7 +21,8 @@
   border-color: #5a595956;
 }
 .sorting {
-  width: 150px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  width: 130px;
   color: #5a5959;
   background-color: #f5f1f172;
   border-color: #5a595956;

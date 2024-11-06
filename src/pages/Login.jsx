@@ -74,6 +74,7 @@ export default function Login() {
   return (
     <div className="logInForm">
       <h2 className="logInTitle">Log In</h2>
+      <p className="welcoming">please sign in to continue</p>
       <form className="form" onSubmit={submitHandler}>
         {logInFields.map((field) => {
           return (

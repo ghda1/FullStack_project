@@ -77,6 +77,7 @@ export default function Signup() {
   return (
     <div className="signUpForm">
       <h2 className="signUpTitle">Sign Up</h2>
+      <p className="welcoming">Welcome, please sign up to join us</p>
       <form className="form" onSubmit={submitHandler}>
         {signUpFields.map((field) => {
           return (

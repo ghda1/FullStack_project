@@ -11,6 +11,7 @@ import ProductDetails from "./pages/ProductDetails";
 import { UserProvider } from "./contexts/UserContext";
 import AddressSignUp from "./pages/AddressSignUp";
 import { AddressProvider } from "./contexts/AddressContext";
+import ProtectRouteByLogIn from "../routes/ProtectRouteByLogIn";
 
 function App() {
   const router = createBrowserRouter([
@@ -23,8 +24,8 @@ function App() {
           element: <Home />,
         },
         {
-          path: "/profile",
-          element: <Profile />,
+          path: "/productDetails/:productId",
+          element: <ProductDetails />,
         },
         {
           path: "/signup",
@@ -39,12 +40,18 @@ function App() {
           element: <Login />,
         },
         {
-          path: "/signOut",
-          element: <Home />,
+          path: "/profile",
+          element: <Profile />,
         },
         {
-          path: "/productDetails/:productId",
-          element: <ProductDetails />,
+          path: "/",
+          element: <ProtectRouteByLogIn />,
+          children: [
+            {
+              path: "/signOut",
+              element: <Home />,
+            },
+          ],
         },
       ],
     },

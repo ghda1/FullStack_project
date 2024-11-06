@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 function Material({ material }) {
   return (
     <>
-      <p className="productMaterial">{material}</p>
+      <p className="productMaterial">Material: {material}</p>
     </>
   );
 }
