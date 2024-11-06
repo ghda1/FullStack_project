@@ -7,8 +7,12 @@ export const getAllUsers = async () => {
   return res.data.data;
 };
 
-export const getSingleUser = async (userId) => {
-  const res = await axios(`${baseURL}/${userId}`);
+export const getSingleUser = async (userId, token) => {
+  const res = await axios(`${baseURL}/${userId}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
   return res.data.data;
 };
 
@@ -21,7 +25,7 @@ export const registerUser = async (userData) => {
   return res.data;
 };
 
- export const logInUser = async (userData) => {
+export const logInUser = async (userData) => {
   const res = await axios.post(`${baseURL}/login`, userData, {
     headers: {
       "Content-Type": "application/json",

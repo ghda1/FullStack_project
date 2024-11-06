@@ -2,13 +2,21 @@ import axios from "axios";
 
 const baseURL = import.meta.env.VITE_BASE_ADDRESS_URL;
 
-export const getAllAddresses = async () => {
-  const res = await axios(`${baseURL}`);
+export const getAllAddresses = async (token) => {
+  const res = await axios(`${baseURL}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
   return res.data.data;
 };
 
-export const getSingleAddress = async (addressId) => {
-  const res = await axios(`${baseURL}/${addressId}`);
+export const getSingleAddress = async (addressId, token) => {
+  const res = await axios(`${baseURL}/${addressId}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
   return res.data.data;
 };
 

@@ -5,7 +5,7 @@ import { Container } from "react-bootstrap";
 
 import "../components/products/ProductDetails.css";
 import { ProductContext } from "../contexts/ProductContext";
-import { getSingleProduct } from "../services/ProductService";
+import { getSingleProduct } from "../services/productService";
 import Material from "../components/Material";
 import Colors from "../components/Colors";
 import Sizes from "../components/Sizes";

@@ -1,7 +1,5 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useState } from "react";
 import PropTypes from "prop-types";
-
-import { getAllAddresses } from "../services/addressService";
 
 export const AddressContext = createContext();
 
@@ -10,21 +8,6 @@ export const AddressProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const fetchData = async () => {
-    try {
-      setIsLoading(true);
-      const res = await getAllAddresses();
-      const addressData = res;
-      setAddresses(addressData);
-      setIsLoading(false);
-    } catch (error) {
-      setError(error);
-    }
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
 
   return (
     <AddressContext.Provider

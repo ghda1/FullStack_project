@@ -9,9 +9,21 @@ export const getAllProducts = async (
   sortBy = "title",
   sortOrder = "asc"
 ) => {
-  const res = await axios(
-    `${baseURL}?searchQuery=${searchQuery}&pageNumber=${pageNumber}&pageSize=${pageSize}&sortBy=${sortBy}&sortOrder=${sortOrder}`
-  );
+  const params = new URLSearchParams();
+
+  params.append("pageNumber", pageNumber);
+  params.append("pageSize", pageSize);
+
+  if (searchQuery) {
+    params.append("searchQuery", searchQuery);
+  }
+  if (sortBy) {
+    params.append("sortBy", sortBy);
+  }
+  if (sortOrder) {
+    params.append("sortOrder", sortOrder);
+  }
+  const res = await axios(`${baseURL}?${params.toString()}`);
   return res.data.data;
 };
 
