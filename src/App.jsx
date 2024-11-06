@@ -39,6 +39,10 @@ function App() {
           element: <Login />,
         },
         {
+          path: "/signOut",
+          element: <Home />,
+        },
+        {
           path: "/productDetails/:productId",
           element: <ProductDetails />,
         },

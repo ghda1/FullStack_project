@@ -20,3 +20,12 @@ export const registerUser = async (userData) => {
   });
   return res.data;
 };
+
+ export const logInUser = async (userData) => {
+  const res = await axios.post(`${baseURL}/login`, userData, {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  return res.data;
+};

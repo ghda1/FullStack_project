@@ -1,13 +1,18 @@
-.signUpForm {
+.signUpForm,
+.logInForm {
   flex-direction: column;
   align-items: center;
   margin-top: 20px;
   margin-bottom: 2rem;
 }
+.logInForm{
+  margin-bottom: 8rem;
+}
 
-.signUpTitle {
+.signUpTitle,
+.logInTitle {
   text-align: center;
-  font-size: 24px; 
+  font-size: 24px;
   margin-bottom: 20px;
   margin-right: 3rem;
 }
