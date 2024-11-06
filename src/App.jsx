@@ -12,6 +12,7 @@ import { UserProvider } from "./contexts/UserContext";
 import AddressSignUp from "./pages/AddressSignUp";
 import { AddressProvider } from "./contexts/AddressContext";
 import ProtectRouteByLogIn from "../routs/ProtectRouteByLogIn";
+import UpdateProfile from "./pages/UpdateProfile";
 
 function App() {
   const router = createBrowserRouter([
@@ -40,16 +41,20 @@ function App() {
           element: <Login />,
         },
         {
-          path: "/profile",
-          element: <Profile />,
-        },
-        {
           path: "/",
           element: <ProtectRouteByLogIn />,
           children: [
             {
               path: "/signOut",
               element: <Home />,
+            },
+            {
+              path: "/profile",
+              element: <Profile />,
+            },
+            {
+              path: "/updateProfile",
+              element: <UpdateProfile />,
             },
           ],
         },

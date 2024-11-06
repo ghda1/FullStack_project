@@ -1,12 +1,16 @@
 import React, { useContext, useEffect, useState } from "react";
 import { UserContext } from "../contexts/UserContext";
-import { getSingleUser } from "../services/userService";
+import { deleteUser, getSingleUser } from "../services/userService";
 import { jwtDecode } from "jwt-decode";
 import { Card, Container } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 function Profile() {
-  const { error, setError, isLoading, setIsLoading } = useContext(UserContext);
+  const { error, setError, isLoading, setIsLoading, setLogIn, setToken } =
+    useContext(UserContext);
   const [user, setUser] = useState();
+
+  const navigate = useNavigate();
 
   const userData = JSON.parse(localStorage.getItem("userData"));
   const token = userData.token;
@@ -17,7 +21,6 @@ function Profile() {
     try {
       setIsLoading(true);
       const findUser = await getSingleUser(userId, token);
-      console.log(findUser);
       setUser(findUser);
       setIsLoading(false);
     } catch (error) {
@@ -40,6 +43,12 @@ function Profile() {
   }
 
   const { firstName, lastName, email, phone } = user;
+
+  const handleDelteProfile = async (userId) => {
+    // await deleteUser(userId, token);
+    //     setLogIn(false);
+    //     setToken(null);
+  };
   return (
     <Container className="profileContianer">
       <Card className="profileCard">
@@ -53,6 +62,18 @@ function Profile() {
         <h3 className="lastName">Last Name: {lastName}</h3>
         <h3 className="email">Email: {email}</h3>
         <h3 className="phone">Phone Number: {phone}</h3>
+        <button
+          className="update-btn"
+          onClick={() => navigate("/updateProfile", { state: user })}
+        >
+          Update Profile
+        </button>
+        <button
+          className="delet-btn"
+          onClick={() => handleDelteProfile(user.userId)}
+        >
+          Update Profile
+        </button>
       </Card>
     </Container>
   );

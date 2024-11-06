@@ -33,3 +33,12 @@ export const logInUser = async (userData) => {
   });
   return res.data;
 };
+
+export const deleteUser = async (userId, token) => {
+  const res = await axios.delete(`${baseURL}/${userId}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  return res;
+};
