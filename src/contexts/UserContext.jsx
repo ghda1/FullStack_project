@@ -10,6 +10,7 @@ export const UserProvider = ({ children }) => {
   const [error, setError] = useState(null);
   const [isLogIn, setLogIn] = useState(false);
   const [token, setToken] = useState(null);
+  const [userLoggedIn, setUserLoggedIn] = useState(null);
 
   const fetchData = async () => {
     try {
@@ -40,6 +41,8 @@ export const UserProvider = ({ children }) => {
         setLogIn,
         token,
         setToken,
+        userLoggedIn,
+        setUserLoggedIn
       }}
     >
       {children}

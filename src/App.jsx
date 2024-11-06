@@ -11,7 +11,7 @@ import ProductDetails from "./pages/ProductDetails";
 import { UserProvider } from "./contexts/UserContext";
 import AddressSignUp from "./pages/AddressSignUp";
 import { AddressProvider } from "./contexts/AddressContext";
-import ProtectRouteByLogIn from "../routes/ProtectRouteByLogIn";
+import ProtectRouteByLogIn from "../routs/ProtectRouteByLogIn";
 
 function App() {
   const router = createBrowserRouter([

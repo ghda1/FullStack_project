@@ -51,7 +51,7 @@ function ProductDetails() {
           <Material material={material} />
           <Sizes sizes={sizes} />
           <Colors colors={colors} />
-          <h4 className="productPrice">Price: {price} SAR</h4>
+          <h4 className="productDetailsPrice">Price: {price} SAR</h4>
         </Card.Body>
       </Card>
     </Container>

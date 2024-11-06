@@ -1,6 +1,6 @@
-.search-sort{
+.search-sort {
   display: flex;
-    justify-content: center;
+  justify-content: center;
   align-items: center;
   align-content: center;
 }
@@ -21,6 +21,7 @@
   border-color: #5a595956;
 }
 .sorting {
+  align-content: center;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   width: 130px;
   color: #5a5959;

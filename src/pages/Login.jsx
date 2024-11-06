@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { jwtDecode } from "jwt-decode";
 
 import FormGroup from "../components/form/FormGroup";
 import FormButton from "../components/form/FormButton";
@@ -16,7 +17,8 @@ export default function Login() {
 
   const [user, setUser] = useState(initialValue);
   const [errors, setErrors] = useState({});
-  const { isLogIn, setLogIn, token, setToken } = useContext(UserContext);
+  const { isLogIn, setLogIn, token, setToken, setUserLoggedIn } =
+    useContext(UserContext);
   const navigate = useNavigate();
 
   const handleChange = (event) => {
@@ -59,6 +61,8 @@ export default function Login() {
       if (res.length != 0) {
         setLogIn(true);
         setToken(res);
+        const decodeToken = jwtDecode(token);
+        setUserLoggedIn(decodeToken);
         localStorage.setItem(
           "userData",
           JSON.stringify({ userData, isLogIn, token })

@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 function Colors({ colors }) {
   return (
     <>
-      <label>Colors:</label>
+      <label className="productDetailsLable">Colors:</label>
       <select className="colorSelect">
         {colors.map((color) => {
           return (

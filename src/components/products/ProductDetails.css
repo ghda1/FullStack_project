@@ -1,42 +1,10 @@
-/* .productDetailsContainer{
-    display: flex;
- justify-content:center;
-  text-align: center;
-  align-items: center;
-}
 
-.productDetailsCard{
-    width: 900px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  transition: 0.3s;
-  background: #f3f3f3 !important;
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-  justify-content:center;
-  text-align: center;
-  align-items: center;
-  border-radius: 4px;
-  height: 600px;
-  margin: 2rem;
-}
-.productDetailsImage{
-    height: 400px;
-    margin-right: 25rem;
-    margin-top: 30rem;
-}
-.productDetailsInfo{
-    margin-left: 20rem;
-    margin-bottom: 30rem;
-} */
-
-/* Container and Card */
 .productDetailsContainer {
   display: flex;
   justify-content: center;
   padding: 20px;
-  margin-top: 8rem;
-  margin-bottom: 8rem;
+  margin-top: 6rem;
+  margin-bottom: 6rem;
 }
 
 .productDetailsCard {
@@ -50,7 +18,7 @@
   background: #f3f3f3 !important;
 }
 
-/* Image */
+
 .productDetailsImage {
   width: 100%;
   max-width: 300px;
@@ -58,7 +26,7 @@
   border-right: 1px solid #ddd;
 }
 
-/* Product Info */
+
 .productDetailsInfo {
   padding: 20px;
   display: flex;
@@ -76,14 +44,14 @@
   align-self: center;
 }
 
-.productPrice {
+.productDetailsPrice {
   font-size: 22px;
   font-weight: bold;
   color: #ff5a5a;
   margin-top: 20px;
 }
 
-/* Select Inputs */
+
 .sizeSelect, .colorSelect {
     width: 200px;
   padding: 8px;
@@ -93,7 +61,7 @@
   margin-top: 5px;
 }
 
-label {
+.productDetailsLable {
   font-weight: bold;
   color: #666;
   display: block;

@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 function Sizes({ sizes }) {
   return (
     <>
-      <label>Sizes: </label>
+      <label className="productDetailsLable">Sizes: </label>
       <select className="sizeSelect">
         {sizes.map((size) => {
           return (
