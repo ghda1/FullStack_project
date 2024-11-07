@@ -12,7 +12,7 @@ function Footer() {
       <p className="copyright">Developed by Ghadah &copy; {year}</p>
       <div>
         <Link to="/">Products</Link>
-        <Link to="/signup">Join Us</Link>
+        <Link to="/signup">SignUp</Link>
       </div>
       <div className="contact">
         <a href="https://github.com/ghda1" target="_blank">

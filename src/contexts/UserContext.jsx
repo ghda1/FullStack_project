@@ -4,17 +4,24 @@ import PropTypes from "prop-types";
 export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
+  const userData = JSON.parse(localStorage.getItem("userData"));
+
   const [users, setUsers] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [isLogIn, setLogIn] = useState(false);
-  const [token, setToken] = useState(null);
-  const [userLoggedIn, setUserLoggedIn] = useState(null);
+
+  const [isLogIn, setLogIn] = useState((userData && userData.isLogIn) || false);
+  const [token, setToken] = useState((userData && userData.token) || null);
+  const [userLoggedIn, setUserLoggedIn] = useState(
+    (userData && userData.userData) || null
+  );
 
   useEffect(() => {
     const userData = JSON.parse(localStorage.getItem("userData"));
     if (userData) {
-      setUserLoggedIn(userData);
+      setLogIn(userData.isLogIn);
+      setToken(userData.token);
+      setUserLoggedIn(userData.userData);
     }
   }, []);
 
