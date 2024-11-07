@@ -17,8 +17,7 @@ export default function Login() {
 
   const [user, setUser] = useState(initialValue);
   const [errors, setErrors] = useState({});
-  const { isLogIn, setLogIn, token, setToken, setUserLoggedIn } =
-    useContext(UserContext);
+  const { setLogIn, setToken, setUserLoggedIn } = useContext(UserContext);
   const navigate = useNavigate();
 
   const handleChange = (event) => {
@@ -35,8 +34,8 @@ export default function Login() {
   const isValidateForm = () => {
     const newErrors = {};
     if (!user.email) newErrors.email = "Email is required";
-    if (user.email.length < 7)
-      newErrors.email = "Email should be at least 7 characters long";
+    if (user.email.length < 10)
+      newErrors.email = "Email should be at least 10 characters long";
     if (!user.password.trim()) newErrors.password = "User password is required";
     if (user.password.length < 7)
       newErrors.password = "User password should be at least 7 characters long";
@@ -57,15 +56,19 @@ export default function Login() {
         email: user.email,
         password: user.password,
       };
-      const res = await handelLogInUser(userData);
-      if (res.length != 0) {
+      const userToken = await handelLogInUser(userData);
+      if (userToken.length != 0) {
         setLogIn(true);
-        setToken(res);
-        const decodeToken = jwtDecode(token);
+        setToken(userToken);
+        const decodeToken = jwtDecode(userToken);
         setUserLoggedIn(decodeToken);
         localStorage.setItem(
           "userData",
-          JSON.stringify({ userData, isLogIn, token })
+          JSON.stringify({
+            userData: decodeToken,
+            isLogIn: true,
+            token: userToken,
+          })
         );
         restValues();
         navigate("/");

@@ -16,7 +16,7 @@ export default function Products() {
     return <h2>{error.message}</h2>;
   }
 
-  if (products.length == 0) {
+  if (!products) {
     return <h2>There is no products</h2>;
   }
 

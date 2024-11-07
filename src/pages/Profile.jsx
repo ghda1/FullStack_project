@@ -1,26 +1,28 @@
 import React, { useContext, useEffect, useState } from "react";
+import { Card, Container } from "react-bootstrap";
+import { useNavigate, useParams } from "react-router-dom";
+
 import { UserContext } from "../contexts/UserContext";
 import { deleteUser, getSingleUser } from "../services/userService";
-import { jwtDecode } from "jwt-decode";
-import { Card, Container } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
 
 function Profile() {
-  const { error, setError, isLoading, setIsLoading, setLogIn, setToken } =
+  const { isLoading, setIsLoading, error, setError, setToken } =
     useContext(UserContext);
   const [user, setUser] = useState();
 
   const navigate = useNavigate();
 
   const userData = JSON.parse(localStorage.getItem("userData"));
+
   const token = userData.token;
-  const decodeToken = jwtDecode(token);
-  const userId = decodeToken.nameid;
+
+  const { userId } = useParams();
 
   const fetchData = async (userId, token) => {
     try {
       setIsLoading(true);
       const findUser = await getSingleUser(userId, token);
+      setToken(token);
       setUser(findUser);
       setIsLoading(false);
     } catch (error) {
@@ -44,36 +46,43 @@ function Profile() {
 
   const { firstName, lastName, email, phone } = user;
 
-  const handleDelteProfile = async (userId) => {
-    // await deleteUser(userId, token);
-    //     setLogIn(false);
-    //     setToken(null);
+  const handleDelteProfile = async (userId, token) => {
+    try {
+      await deleteUser(userId, token);
+      localStorage.removeItem("userData");
+      navigate("/");
+    } catch (error) {
+      setError(error.message);
+    }
   };
+
   return (
     <Container className="profileContianer">
       <Card className="profileCard">
         <img
           className="profileImage"
-          src="./images/personal-photo.png"
+          src="../images/personal-photo.png"
           alt="profile picture"
         />
         <Card.Body className="profileInfo"></Card.Body>
-        <h3 className="fistName">First Name: {firstName}</h3>
-        <h3 className="lastName">Last Name: {lastName}</h3>
-        <h3 className="email">Email: {email}</h3>
-        <h3 className="phone">Phone Number: {phone}</h3>
-        <button
-          className="update-btn"
-          onClick={() => navigate("/updateProfile", { state: user })}
-        >
-          Update Profile
-        </button>
-        <button
-          className="delet-btn"
-          onClick={() => handleDelteProfile(user.userId)}
-        >
-          Update Profile
-        </button>
+        <p className="fistName">First Name: {firstName}</p>
+        <p className="lastName">Last Name: {lastName}</p>
+        <p className="email">Email: {email}</p>
+        <p className="phone">Phone Number: {phone}</p>
+        <div className="buttons">
+          <button
+            className="update-btn"
+            onClick={() => navigate("/updateProfile", { state: user })}
+          >
+            Edit Profile
+          </button>
+          <button
+            className="delet-btn"
+            onClick={() => handleDelteProfile(user.userId, token)}
+          >
+            Delete Profile
+          </button>
+        </div>
       </Card>
     </Container>
   );

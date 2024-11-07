@@ -49,7 +49,7 @@ function App() {
               element: <Home />,
             },
             {
-              path: "/profile",
+              path: "/profile/:userId",
               element: <Profile />,
             },
             {
@@ -63,13 +63,13 @@ function App() {
   ]);
 
   return (
-    <ProductProvider>
-      <UserProvider>
-        <AddressProvider>
+    <UserProvider>
+      <AddressProvider>
+        <ProductProvider>
           <RouterProvider router={router} />
-        </AddressProvider>
-      </UserProvider>
-    </ProductProvider>
+        </ProductProvider>
+      </AddressProvider>
+    </UserProvider>
   );
 }
 

@@ -1,23 +1,24 @@
 .signUpForm,
-.logInForm {
+.logInForm,
+.updateForm {
   flex-direction: column;
   align-items: center;
   margin-top: 20px;
   margin-bottom: 2rem;
 }
-.logInForm{
+.logInForm {
   margin-bottom: 8rem;
 }
 
 .signUpTitle,
 .logInTitle,
+.updateTitle,
 .welcoming {
   text-align: center;
   font-size: 24px;
   margin-bottom: 20px;
-
 }
-.welcoming{
+.welcoming {
   font-size: 15px;
   color: #504f4f;
 }
@@ -76,4 +77,97 @@ form button:hover {
 }
 .errors {
   color: rgb(244, 132, 132);
+}
+
+.profileContianer {
+  display: flex;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+.profileCard {
+  max-width: 500px;
+  width: 100%;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #fff8f0; /* Soft beige card background */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  margin: 0 auto;
+}
+
+/* Centering the profile image */
+.profileImage {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin: 0 auto 20px; /* Centers image */
+  display: block;
+  object-fit: cover;
+  border: 3px solid #d4a373; /* Warm beige border around image */
+}
+
+.profileInfo h3 {
+  font-size: 1rem;
+  margin: 10px 0;
+  color: #8c7a64; /* Medium beige text color */
+}
+
+/* Buttons styling */
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px; /* Space between buttons */
+  margin-top: 15px;
+}
+
+.update-btn,
+.delet-btn {
+  flex: 1; /* Makes the buttons the same size */
+  padding: 8px;
+  font-size: 0.9rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.update-btn {
+  background-color: #d4a373; /* Warm beige button */
+  color: #fff;
+  margin-right: 1rem;
+}
+
+.update-btn:hover {
+  background-color: #c49563; /* Slightly darker beige on hover */
+}
+
+.delet-btn {
+  background-color: #964726; /* Dusty rose button */
+  color: #fff;
+}
+
+.delet-btn:hover {
+  background-color: #964726; /* Darker dusty rose on hover */
+}
+
+.buttons {
+  display: flex;
+}
+/* Responsive styling */
+@media (max-width: 600px) {
+  .profileCard {
+    padding: 15px;
+  }
+
+  .profileImage {
+    width: 100px;
+    height: 100px;
+  }
+
+  .button-container .update-btn,
+  .button-container .delet-btn {
+    font-size: 0.8rem;
+    padding: 6px;
+  }
 }

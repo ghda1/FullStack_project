@@ -40,8 +40,8 @@ export default function Signup() {
     if (user.lastName.length < 3)
       newErrors.lastName = "Last Name should be at least 3 characters long";
     if (!user.email) newErrors.email = "User email is required";
-    if (user.email.length < 7)
-      newErrors.email = "User email should be at least 7 characters long";
+    if (user.email.length < 10)
+      newErrors.email = "User email should be at least 10 characters long";
     if (!user.password.trim()) newErrors.password = "User password is required";
     if (user.password.length < 7)
       newErrors.password = "User password should be at least 7 characters long";

@@ -21,13 +21,6 @@ export const updateUserFields = [
     required: false,
   },
   {
-    id: "password",
-    type: "password",
-    lable: "Password",
-    name: "password",
-    required: false,
-  },
-  {
     id: "phone",
     type: "text",
     lable: "Phone",
