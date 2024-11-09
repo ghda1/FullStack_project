@@ -13,6 +13,10 @@ import AddressSignUp from "./pages/AddressSignUp";
 import { AddressProvider } from "./contexts/AddressContext";
 import ProtectRouteByLogIn from "../routs/ProtectRouteByLogIn";
 import UpdateProfile from "./pages/UpdateProfile";
+import Dashboard from "./pages/Dashboard";
+import ProtectRouteByAdmin from "../routs/ProtectRouteByAdmin";
+import UpdateProduct from "./pages/UpdateProduct";
+import AddProduct from "./pages/AddProduct";
 
 function App() {
   const router = createBrowserRouter([
@@ -55,6 +59,24 @@ function App() {
             {
               path: "/updateProfile",
               element: <UpdateProfile />,
+            },
+            {
+              path: "/",
+              element: <ProtectRouteByAdmin />,
+              children: [
+                {
+                  path: "/dashboard",
+                  element: <Dashboard />,
+                },
+                {
+                  path: "/updateProduct",
+                  element: <UpdateProduct />,
+                },
+                {
+                  path: "/addProduct",
+                  element: <AddProduct />,
+                },
+              ],
             },
           ],
         },

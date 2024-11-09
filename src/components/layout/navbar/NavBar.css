@@ -4,7 +4,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem;
+  padding: 0.2rem;
   background-color: #e1dede;
   font-size: 20px;
 }
@@ -18,7 +18,7 @@
 #nav .logo {
   width: 200px;
   height: auto;
-  margin-left: 3rem;
+  margin-right: 11rem;
 }
 
 .left a,

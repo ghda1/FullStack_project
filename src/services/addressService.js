@@ -28,3 +28,12 @@ export const addAddress = async (addressData) => {
   });
   return res.data;
 };
+
+export const deleteAddress = async (addressId, token) => {
+  const res = await axios.delete(`${baseURL}/${addressId}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  return res;
+};

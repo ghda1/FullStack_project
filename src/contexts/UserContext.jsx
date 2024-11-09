@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import PropTypes from "prop-types";
+import { getAllUsers } from "../services/userService";
 
 export const UserContext = createContext();
 
@@ -15,13 +16,28 @@ export const UserProvider = ({ children }) => {
   const [userLoggedIn, setUserLoggedIn] = useState(
     (userData && userData.userData) || null
   );
+  const [role, setRole] = useState((userLoggedIn && userLoggedIn.role) || null);
+
+  const fetchData = async (token) => {
+    try {
+      setIsLoading(true);
+      const res = await getAllUsers(token);
+      const usersData = res;
+      setUsers(usersData);
+      setIsLoading(false);
+    } catch (error) {
+      setError(error);
+    }
+  };
 
   useEffect(() => {
+    fetchData(token);
     const userData = JSON.parse(localStorage.getItem("userData"));
     if (userData) {
       setLogIn(userData.isLogIn);
       setToken(userData.token);
       setUserLoggedIn(userData.userData);
+      setRole(userLoggedIn.role);
     }
   }, []);
 
@@ -40,6 +56,8 @@ export const UserProvider = ({ children }) => {
         setToken,
         userLoggedIn,
         setUserLoggedIn,
+        role,
+        setRole,
       }}
     >
       {children}

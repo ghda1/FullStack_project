@@ -7,7 +7,7 @@ import { UserContext } from "../../../contexts/UserContext";
 import "./NavBar.css";
 
 function NavBar() {
-  const { setLogIn, setToken, userLoggedIn, setUserLoggedIn, isLogIn } =
+  const { setLogIn, setToken, userLoggedIn, setUserLoggedIn, isLogIn, role } =
     useContext(UserContext);
 
   const userId = userLoggedIn && userLoggedIn.nameid;
@@ -24,6 +24,7 @@ function NavBar() {
         <div className="left">
           <Link to="/">Home</Link>
           {isLogIn && <Link to={`/profile/${userId}`}>Profile</Link>}
+          {isLogIn && role === "Admin" && <Link to="/dashboard">Dashboard</Link>}
         </div>
         <img className="logo" src={logo} title="logo" />
         <div className="right">

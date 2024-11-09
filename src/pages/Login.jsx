@@ -56,25 +56,28 @@ export default function Login() {
         email: user.email,
         password: user.password,
       };
-      const userToken = await handelLogInUser(userData);
-      if (userToken.length != 0) {
-        setLogIn(true);
-        setToken(userToken);
-        const decodeToken = jwtDecode(userToken);
-        setUserLoggedIn(decodeToken);
-        localStorage.setItem(
-          "userData",
-          JSON.stringify({
-            userData: decodeToken,
-            isLogIn: true,
-            token: userToken,
-          })
-        );
-        restValues();
-        navigate("/");
-      } else {
-        errors.signIn = "Incorrect user name or password";
-        setErrors(errors);
+      try {
+        const userToken = await handelLogInUser(userData);
+        if (userToken.length != 0) {
+          setLogIn(true);
+          setToken(userToken);
+          const decodeToken = jwtDecode(userToken);
+          setUserLoggedIn(decodeToken);
+          localStorage.setItem(
+            "userData",
+            JSON.stringify({
+              userData: decodeToken,
+              isLogIn: true,
+              token: userToken,
+            })
+          );
+          restValues();
+          navigate("/");
+        }
+      } catch {
+        const newErrors = {};
+        newErrors.signIn = "Incorrect email or password";
+        setErrors(newErrors);
       }
     }
   };

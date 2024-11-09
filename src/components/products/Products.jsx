@@ -9,7 +9,7 @@ export default function Products() {
   const { products, isLoading, error } = useContext(ProductContext);
 
   if (isLoading) {
-    return <h2>Products is Loading...</h2>;
+    return <h2>Products are Loading...</h2>;
   }
 
   if (error) {

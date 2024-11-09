@@ -83,6 +83,8 @@ form button:hover {
   display: flex;
   justify-content: center;
   padding: 40px 20px;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 
 .profileCard {
@@ -90,65 +92,64 @@ form button:hover {
   width: 100%;
   padding: 20px;
   border-radius: 10px;
-  background-color: #fff8f0; 
+  background-color: #f3f3f3;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
   margin: 0 auto;
 }
 
-
 .profileImage {
   width: 120px;
   height: 120px;
   border-radius: 50%;
-  margin: 0 auto 20px; 
+  margin: 0 auto 20px;
   display: block;
   object-fit: cover;
-  border: 3px solid #d4a373; 
+  border: 3px solid #5f6f65;
 }
 
 .profileInfo h3 {
   font-size: 1rem;
   margin: 10px 0;
-  color: #8c7a64; 
+  color: #8c7a64;
 }
-
 
 .button-container {
   display: flex;
   justify-content: space-between;
-  gap: 10px; 
+  gap: 10px;
   margin-top: 15px;
 }
 
 .update-btn,
 .delet-btn {
-  flex: 1; 
+  flex: 1;
   padding: 8px;
   font-size: 0.9rem;
   border: none;
   border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.3s;
+  margin-top: 2rem;
 }
 
 .update-btn {
-  background-color: #d4a373; 
-  color: #fff;
+  background-color: #9ca986;
+  color: #f6f4f4;
   margin-right: 1rem;
 }
 
 .update-btn:hover {
-  background-color: #c49563; 
+  background-color: #abba7c;
 }
 
 .delet-btn {
-  background-color: #964726; 
+  background-color: #9ca986;
   color: #fff;
 }
 
 .delet-btn:hover {
-  background-color: #964726; 
+  background-color: #abba7c;
 }
 
 .buttons {
@@ -169,5 +170,92 @@ form button:hover {
   .button-container .delet-btn {
     font-size: 0.8rem;
     padding: 6px;
+  }
+}
+
+.admin-dashboard {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  padding: 20px;
+  color: #333;
+}
+
+.admin-dashboard h3 {
+  color: #333;
+  margin-bottom: 15px;
+  margin-top: 15px;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.admin-dashboard table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.admin-dashboard img {
+  height: 80px;
+  width: 70px;
+}
+
+.admin-dashboard th,
+.admin-dashboard td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.admin-dashboard th {
+  background-color: #f0f0f0;
+  color: #555;
+  font-weight: 600;
+}
+
+.admin-dashboard tbody tr:hover {
+  background-color: #f9f9f9;
+}
+
+.admin-dashboard td button {
+  background-color: #d87a7c;
+  color: #fff;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.admin-dashboard td button:hover {
+  background-color: #d9363e;
+}
+
+@media (max-width: 768px) {
+  .admin-dashboard table,
+  .admin-dashboard th,
+  .admin-dashboard td {
+    display: block;
+  }
+
+  .admin-dashboard th {
+    display: none;
+  }
+
+  .admin-dashboard td {
+    border-bottom: none;
+    position: relative;
+    padding-left: 50%;
+  }
+
+  .admin-dashboard td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 15px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #888;
   }
 }

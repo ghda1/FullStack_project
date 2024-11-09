@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Outlet } from "react-router-dom";
 import Login from "../src/pages/Login";
+import { UserContext } from "../src/contexts/UserContext";
 
 function ProtectRouteByLogIn() {
-  const userData = JSON.parse(localStorage.getItem("userData"));
+  const { isLogIn } = useContext(UserContext);
 
-  return <div> {userData && userData.isLogIn ? <Outlet /> : <Login />} </div>;
+  return <div> {isLogIn && isLogIn ? <Outlet /> : <Login />} </div>;
 }
 
 export default ProtectRouteByLogIn;

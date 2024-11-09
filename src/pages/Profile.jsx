@@ -6,8 +6,15 @@ import { UserContext } from "../contexts/UserContext";
 import { deleteUser, getSingleUser } from "../services/userService";
 
 function Profile() {
-  const { isLoading, setIsLoading, error, setError, setToken } =
-    useContext(UserContext);
+  const {
+    isLoading,
+    setIsLoading,
+    error,
+    setError,
+    setToken,
+    setLogIn,
+    setUserLoggedIn,
+  } = useContext(UserContext);
   const [user, setUser] = useState();
 
   const navigate = useNavigate();
@@ -49,6 +56,9 @@ function Profile() {
   const handleDelteProfile = async (userId, token) => {
     try {
       await deleteUser(userId, token);
+      setLogIn(false);
+      setToken(null);
+      setUserLoggedIn(null);
       localStorage.removeItem("userData");
       navigate("/");
     } catch (error) {
