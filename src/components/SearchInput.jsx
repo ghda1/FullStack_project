@@ -1,10 +1,6 @@
-import { useContext } from "react";
+import PropTypes from "prop-types";
 
-import { ProductContext } from "../contexts/ProductContext";
-
-function SearchInput() {
-  const { setSearchQuery } = useContext(ProductContext);
-
+function SearchInput({ setSearchQuery }) {
   const handleSearching = (event) => {
     event.preventDefault();
     setTimeout(() => {
@@ -24,5 +20,8 @@ function SearchInput() {
     </div>
   );
 }
+SearchInput.propTypes = {
+  setSearchQuery: PropTypes.func,
+};
 
 export default SearchInput;

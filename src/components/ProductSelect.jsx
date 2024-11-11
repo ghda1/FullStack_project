@@ -1,5 +1,5 @@
-import { MenuItem, OutlinedInput, Select } from "@mui/material";
 import React from "react";
+import { MenuItem, Select } from "@mui/material";
 import PropTypes from "prop-types";
 
 function ProductSelect({ required, value, onChange, options, htmlFor, label }) {

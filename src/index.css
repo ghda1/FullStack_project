@@ -187,7 +187,7 @@ form button:hover {
 }
 .product-select {
   width: 340px;
-  padding: 4px 8px;
+height: 40px;
   border: 1px solid #ccc;
   border-radius: 8px;
   background-color: #fff;

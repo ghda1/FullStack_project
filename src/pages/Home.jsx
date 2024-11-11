@@ -6,12 +6,19 @@ import SortSelect from "../components/SortSelect";
 import { ProductContext } from "../contexts/ProductContext";
 
 function Home() {
-  const { pageNumber, setPagaeNumber, totalPages } = useContext(ProductContext);
+  const {
+    pageNumber,
+    setPagaeNumber,
+    setSearchQuery,
+    setSortBy,
+    setSortOrder,
+    totalPages,
+  } = useContext(ProductContext);
   return (
     <>
       <div className="search-sort">
-        <SearchInput />
-        <SortSelect />
+        <SearchInput setSearchQuery={setSearchQuery} />
+        <SortSelect setSortBy={setSortBy} setSortOrder={setSortOrder} />
       </div>
       <Products />
       <PaginationComponent

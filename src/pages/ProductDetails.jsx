@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import { Container } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
@@ -9,10 +9,13 @@ import { ProductContext } from "../contexts/ProductContext";
 import { getSingleProduct } from "../services/ProductService";
 import Material from "../components/Material";
 import ProductSelect from "../components/ProductSelect";
+import { CartContext } from "../contexts/CartContext";
 
 function ProductDetails() {
   const { isLoading, setIsLoading, error, setError } =
     useContext(ProductContext);
+
+  const { addProductToCart } = useContext(CartContext);
   const { productId } = useParams();
   const [product, setProduct] = useState(null);
   const [selectedSize, setSelectedSize] = useState([]);
@@ -48,12 +51,14 @@ function ProductDetails() {
   const handleAddToCart = (product) => {
     const productToCart = {
       image: product.image,
-      id: product.productId,
+      title: product.title,
+      productId: product.productId,
+      material: product.material,
       size: selectedSize,
       color: selectedColor,
       price: product.price,
-      material: product.material,
     };
+    addProductToCart(productToCart);
   };
 
   const handleSizeChange = (event) => {

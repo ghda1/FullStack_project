@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { ProductContext } from "../contexts/ProductContext";
 import { deleteProduct, getAllProducts } from "../services/ProductService";
 import PaginationComponent from "./PaginationComponent";
+import SortSelect from "./SortSelect";
+import SearchInput from "./SearchInput";
 
 function ManageProducts() {
   const {
@@ -16,6 +18,9 @@ function ManageProducts() {
     pageNumber,
     setPagaeNumber,
     totalPages,
+    setSearchQuery,
+    setSortBy,
+    setSortOrder,
   } = useContext(ProductContext);
 
   const navigate = useNavigate();
@@ -50,6 +55,10 @@ function ManageProducts() {
   return (
     <div className="dashboard-content">
       <h3>Manage Products</h3>
+      <div className="search-sort">
+        <SearchInput setSearchQuery={setSearchQuery} />
+        <SortSelect setSortBy={setSortBy} setSortOrder={setSortOrder} />
+      </div>
       <Table responsive>
         <thead>
           <tr>

@@ -1,12 +1,9 @@
+import PropTypes from "prop-types";
 import { Box, FormControl, InputLabel, MenuItem, Select } from "@mui/material";
-import { useContext, useState } from "react";
+import { useState } from "react";
 
-import { ProductContext } from "../contexts/ProductContext";
-
-function SortSelect() {
-  const { setSortBy, setSortOrder } = useContext(ProductContext);
-
-  const { sortChoice, setSortChoice } = useState();
+function SortSelect({ setSortBy, setSortOrder }) {
+  const { sortChoice } = useState();
 
   const handleChange = (event) => {
     const choiceValue = event.target.value;
@@ -39,8 +36,8 @@ function SortSelect() {
           label="sorting"
           onChange={handleChange}
         >
-          <MenuItem value={10}>A - Z</MenuItem>
-          <MenuItem value={20}>Z - A</MenuItem>
+          <MenuItem value={10}>Title: A - Z</MenuItem>
+          <MenuItem value={20}>Title: Z - A</MenuItem>
           <MenuItem value={30}>Price: Low to High</MenuItem>
           <MenuItem value={40}>Price: High to Low</MenuItem>
         </Select>
@@ -48,5 +45,10 @@ function SortSelect() {
     </Box>
   );
 }
+
+SortSelect.propTypes = {
+  setSortBy: PropTypes.func,
+  setSortOrder: PropTypes.func,
+};
 
 export default SortSelect;

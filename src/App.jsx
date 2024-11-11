@@ -23,6 +23,7 @@ import ManageUsers from "./components/ManageUsers";
 import ManageAddresses from "./components/ManageAddresses";
 import ManageProducts from "./components/ManageProduct";
 import Cart from "./pages/Cart";
+import { CartProvider } from "./contexts/CartContext";
 
 function App() {
   const router = createBrowserRouter([
@@ -118,7 +119,9 @@ function App() {
         <ProductProvider>
           <SizeProvider>
             <ColorProvider>
-              <RouterProvider router={router} />
+              <CartProvider>
+                <RouterProvider router={router} />
+              </CartProvider>
             </ColorProvider>
           </SizeProvider>
         </ProductProvider>
