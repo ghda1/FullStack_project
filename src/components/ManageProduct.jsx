@@ -1,17 +1,30 @@
-import React, { useContext } from "react";
-import { UserContext } from "../contexts/UserContext";
+import { useContext } from "react";
 import { Table } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+
 import { ProductContext } from "../contexts/ProductContext";
-import { deleteProduct } from "../services/ProductService";
+import { deleteProduct, getAllProducts } from "../services/ProductService";
+import PaginationComponent from "./PaginationComponent";
 
 function ManageProducts() {
-  const { products, isLoading, error, token } = useContext(ProductContext);
+  const {
+    setProducts,
+    products,
+    isLoading,
+    error,
+    token,
+    pageNumber,
+    setPagaeNumber,
+    totalPages,
+  } = useContext(ProductContext);
 
   const navigate = useNavigate();
 
-  const handleDelteProduct = async (userId, token) => {
-    await deleteProduct(userId, token);
+  const handleDelteProduct = async (productId, token) => {
+    await deleteProduct(productId, token);
+    const res = await getAllProducts();
+    const productsData = res.items;
+    setProducts(productsData);
   };
 
   const handleUpdateProduct = (product) => {
@@ -23,7 +36,7 @@ function ManageProducts() {
   };
 
   if (isLoading) {
-    return <h2>Users are Loading...</h2>;
+    return <h2>Products are Loading...</h2>;
   }
 
   if (error) {
@@ -116,6 +129,11 @@ function ManageProducts() {
           </td>
         </tbody>
       </Table>
+      <PaginationComponent
+        pageNumber={pageNumber}
+        setPagaeNumber={setPagaeNumber}
+        totalPages={totalPages}
+      />
     </div>
   );
 }

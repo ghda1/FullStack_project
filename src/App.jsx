@@ -17,6 +17,8 @@ import Dashboard from "./pages/Dashboard";
 import ProtectRouteByAdmin from "../routs/ProtectRouteByAdmin";
 import UpdateProduct from "./pages/UpdateProduct";
 import AddProduct from "./pages/AddProduct";
+import { SizeProvider } from "./contexts/SizeContext";
+import { ColorProvider } from "./contexts/ColorContext";
 
 function App() {
   const router = createBrowserRouter([
@@ -88,7 +90,11 @@ function App() {
     <UserProvider>
       <AddressProvider>
         <ProductProvider>
-          <RouterProvider router={router} />
+          <SizeProvider>
+            <ColorProvider>
+              <RouterProvider router={router} />
+            </ColorProvider>
+          </SizeProvider>
         </ProductProvider>
       </AddressProvider>
     </UserProvider>

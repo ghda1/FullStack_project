@@ -1,0 +1,52 @@
+export const updateProductFields = [
+  {
+    id: "image",
+    type: "file",
+    lable: "Image",
+    name: "image",
+    accept: "image/*",
+    required: false,
+  },
+  {
+    id: "title",
+    type: "text",
+    lable: "Title",
+    name: "title",
+    required: false,
+  },
+  {
+    id: "material",
+    type: "text",
+    lable: "Material",
+    name: "material",
+    required: false,
+  },
+  {
+    id: "size",
+    type: "select",
+    lable: "Sizes",
+    name: "size",
+    required: false,
+  },
+  {
+    id: "color",
+    type: "select",
+    lable: "Colors",
+    name: "color",
+    required: false,
+  },
+  {
+    id: "quantity",
+    type: "number",
+    lable: "Quantuty",
+    name: "quantity",
+    required: false,
+  },
+  {
+    id: "price",
+    type: "number",
+    lable: "Price",
+    name: "price",
+    required: false,
+  },
+];

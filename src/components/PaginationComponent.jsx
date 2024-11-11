@@ -4,8 +4,8 @@ import { useContext } from "react";
 
 import { ProductContext } from "../contexts/ProductContext";
 
-function PaginationComponent() {
-  const { pageNumber, setPagaeNumber, totalPages } = useContext(ProductContext);
+function PaginationComponent({ pageNumber, setPagaeNumber, totalPages }) {
+
 
   const handleChangePage = (event, value) => {
     setPagaeNumber(value);

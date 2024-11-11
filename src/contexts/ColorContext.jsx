@@ -1,12 +1,13 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import { getAllAddresses } from "../services/addressService";
+
 import { UserContext } from "./UserContext";
+import { getAllColors } from "../services/colorService";
 
-export const AddressContext = createContext();
+export const ColorContext = createContext();
 
-export const AddressProvider = ({ children }) => {
-  const [addresses, setAddresses] = useState([]);
+export const ColorProvider = ({ children }) => {
+  const [colors, setColors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -15,8 +16,8 @@ export const AddressProvider = ({ children }) => {
   const fetchData = async (token) => {
     try {
       setIsLoading(true);
-      const addressData = await getAllAddresses(token);
-      setAddresses(addressData);
+      const colorsData = await getAllColors(token);
+      setColors(colorsData);
       setIsLoading(false);
     } catch (error) {
       setError(error);
@@ -28,10 +29,10 @@ export const AddressProvider = ({ children }) => {
   }, []);
 
   return (
-    <AddressContext.Provider
+    <ColorContext.Provider
       value={{
-        addresses,
-        setAddresses,
+        colors,
+        setColors,
         isLoading,
         setIsLoading,
         error,
@@ -40,10 +41,10 @@ export const AddressProvider = ({ children }) => {
       }}
     >
       {children}
-    </AddressContext.Provider>
+    </ColorContext.Provider>
   );
 };
 
-AddressProvider.propTypes = {
+ColorProvider.propTypes = {
   children: PropTypes.node,
 };

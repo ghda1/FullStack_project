@@ -21,8 +21,7 @@ export const UserProvider = ({ children }) => {
   const fetchData = async (token) => {
     try {
       setIsLoading(true);
-      const res = await getAllUsers(token);
-      const usersData = res;
+      const usersData = await getAllUsers(token);
       setUsers(usersData);
       setIsLoading(false);
     } catch (error) {

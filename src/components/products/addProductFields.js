@@ -1,0 +1,52 @@
+export const addProductFields = [
+  {
+    id: "image",
+    type: "file",
+    lable: "Image",
+    name: "image",
+    accept: "image/*",
+    required: true,
+  },
+  {
+    id: "title",
+    type: "text",
+    lable: "Title",
+    name: "title",
+    required: true,
+  },
+  {
+    id: "material",
+    type: "text",
+    lable: "Material",
+    name: "material",
+    required: true,
+  },
+  {
+    id: "size",
+    type: "select",
+    lable: "Sizes",
+    name: "size",
+    required: true,
+  },
+  {
+    id: "color",
+    type: "select",
+    lable: "Colors",
+    name: "color",
+    required: true,
+  },
+  {
+    id: "quantity",
+    type: "number",
+    lable: "Quantuty",
+    name: "quantity",
+    required: true,
+  },
+  {
+    id: "price",
+    type: "number",
+    lable: "Price",
+    name: "price",
+    required: true,
+  },
+];

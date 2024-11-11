@@ -51,6 +51,8 @@ export const updateProduct = async (productId, productData, token) => {
 };
 
 export const addProduct = async (productData, token) => {
+  console.log(productData);
+  console.log(token);
   const res = await axios.post(`${baseURL}`, productData, {
     headers: {
       Authorization: `Bearer ${token}`,

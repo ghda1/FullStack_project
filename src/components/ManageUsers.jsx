@@ -1,13 +1,16 @@
 import React, { useContext } from "react";
-import { UserContext } from "../contexts/UserContext";
 import { Table } from "react-bootstrap";
-import { deleteUser } from "../services/userService";
+
+import { UserContext } from "../contexts/UserContext";
+import { deleteUser, getAllUsers } from "../services/userService";
 
 function ManageUsers() {
-  const { users, isLoading, error, token } = useContext(UserContext);
+  const { users, setUsers, isLoading, error, token } = useContext(UserContext);
 
   const handleDelteUser = async (userId, token) => {
     await deleteUser(userId, token);
+    const usersData = await getAllUsers();
+    setUsers(usersData);
   };
 
   if (isLoading) {

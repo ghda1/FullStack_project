@@ -1,12 +1,13 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import { getAllAddresses } from "../services/addressService";
+
 import { UserContext } from "./UserContext";
+import { getAllSizes } from "../services/sizeService";
 
-export const AddressContext = createContext();
+export const SizeContext = createContext();
 
-export const AddressProvider = ({ children }) => {
-  const [addresses, setAddresses] = useState([]);
+export const SizeProvider = ({ children }) => {
+  const [sizes, setSizes] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -15,8 +16,8 @@ export const AddressProvider = ({ children }) => {
   const fetchData = async (token) => {
     try {
       setIsLoading(true);
-      const addressData = await getAllAddresses(token);
-      setAddresses(addressData);
+      const sizesData = await getAllSizes(token);
+      setSizes(sizesData);
       setIsLoading(false);
     } catch (error) {
       setError(error);
@@ -28,10 +29,10 @@ export const AddressProvider = ({ children }) => {
   }, []);
 
   return (
-    <AddressContext.Provider
+    <SizeContext.Provider
       value={{
-        addresses,
-        setAddresses,
+        sizes,
+        setSizes,
         isLoading,
         setIsLoading,
         error,
@@ -40,10 +41,10 @@ export const AddressProvider = ({ children }) => {
       }}
     >
       {children}
-    </AddressContext.Provider>
+    </SizeContext.Provider>
   );
 };
 
-AddressProvider.propTypes = {
+SizeProvider.propTypes = {
   children: PropTypes.node,
 };

@@ -3,7 +3,7 @@ import axios from "axios";
 const baseURL = import.meta.env.VITE_BASE_USER_URL;
 
 export const getAllUsers = async (token) => {
-  const res = await axios(`${baseURL}`,{
+  const res = await axios(`${baseURL}`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },

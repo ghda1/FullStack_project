@@ -1,11 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-function InputLabel({ htmlFor, children }) {
+function FormLabel({ htmlFor, children }) {
   return <label htmlFor={htmlFor}>{children}</label>;
 }
-InputLabel.propTypes = {
+FormLabel.propTypes = {
   htmlFor: PropTypes.string,
   children: PropTypes.node,
 };
-export default InputLabel;
+export default FormLabel;

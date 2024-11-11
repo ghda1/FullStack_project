@@ -1,13 +1,17 @@
 import React, { useContext } from "react";
 import { Table } from "react-bootstrap";
+
 import { AddressContext } from "../contexts/AddressContext";
-import { deleteAddress } from "../services/addressService";
+import { deleteAddress, getAllAddresses } from "../services/addressService";
 
 function ManageAddresses() {
-  const { addresses, isLoading, error, token } = useContext(AddressContext);
+  const { addresses, setAddresses, isLoading, error, token } =
+    useContext(AddressContext);
 
   const handleDelteAddress = async (addressId, token) => {
     await deleteAddress(addressId, token);
+    const addresses = await getAllAddresses();
+    setAddresses(addresses);
   };
 
   if (isLoading) {

@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { updateUserFields } from "../components/user/updateUserFields";
 import FormGroup from "../components/form/FormGroup";
 import FormButton from "../components/form/FormButton";
-import { updateUser } from "../services/userService";
+import { getSingleUser, updateUser } from "../services/userService";
 
 function UpdateProfile() {
   const locationState = useLocation();
@@ -25,7 +25,9 @@ function UpdateProfile() {
   };
 
   const handleUpdateUserData = async (userId, updatedUser, token) => {
-await updateUser(userId, updatedUser, token);
+    await updateUser(userId, updatedUser, token);
+    await getSingleUser(userId);
+    navigate(`/profile/${userId}`);
   };
 
   const isValidateForm = () => {
@@ -65,7 +67,6 @@ await updateUser(userId, updatedUser, token);
       };
       handleUpdateUserData(userId, updatedUser, token);
       restValues();
-      navigate("/");
     }
   };
 
