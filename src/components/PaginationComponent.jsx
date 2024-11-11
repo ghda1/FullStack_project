@@ -1,12 +1,8 @@
 import { Pagination } from "@mui/material";
+import PropTypes from "prop-types";
 import React from "react";
-import { useContext } from "react";
-
-import { ProductContext } from "../contexts/ProductContext";
 
 function PaginationComponent({ pageNumber, setPagaeNumber, totalPages }) {
-
-
   const handleChangePage = (event, value) => {
     setPagaeNumber(value);
   };
@@ -20,5 +16,9 @@ function PaginationComponent({ pageNumber, setPagaeNumber, totalPages }) {
     </div>
   );
 }
-
+PaginationComponent.propTypes = {
+  pageNumber: PropTypes.number,
+  setPagaeNumber: PropTypes.func,
+  totalPages: PropTypes.number,
+};
 export default PaginationComponent;

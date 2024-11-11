@@ -1,14 +1,12 @@
 import React from "react";
-import ManageUsers from "../components/ManageUsers";
-import ManageAddresses from "../components/ManageAddresses";
-import ManageProducts from "../components/ManageProduct";
+import SideBar from "../components/SideBar";
+import { Outlet } from "react-router-dom";
 
 function Dashboard() {
   return (
     <div className="admin-dashboard">
-      <ManageUsers />
-      <ManageAddresses />
-      <ManageProducts />
+      <SideBar />
+      <Outlet />
     </div>
   );
 }

@@ -27,7 +27,7 @@ function ManageAddresses() {
   }
 
   return (
-    <div>
+    <div className="dashboard-content">
       <h3>Manage Users Addresses</h3>
       <Table responsive>
         <thead>

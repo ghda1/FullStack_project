@@ -24,7 +24,9 @@ function NavBar() {
         <div className="left">
           <Link to="/">Home</Link>
           {isLogIn && <Link to={`/profile/${userId}`}>Profile</Link>}
-          {isLogIn && role === "Admin" && <Link to="/dashboard">Dashboard</Link>}
+          {isLogIn && role === "Admin" && (
+            <Link to="/dashboard">Dashboard</Link>
+          )}
         </div>
         <img className="logo" src={logo} title="logo" />
         <div className="right">
@@ -34,7 +36,9 @@ function NavBar() {
               Sign Out
             </Link>
           )}
-          <ShoppingCartIcon className="cart-icon" />
+          <Link to={"/cart"}>
+            <ShoppingCartIcon className="cart-icon" />
+          </Link>
         </div>
       </nav>
       <Outlet />

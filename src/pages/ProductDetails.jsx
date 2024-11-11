@@ -1,47 +1,83 @@
 import { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import { Container } from "react-bootstrap";
+import Button from "react-bootstrap/Button";
 
 import "../components/products/ProductDetails.css";
 import { ProductContext } from "../contexts/ProductContext";
 import { getSingleProduct } from "../services/ProductService";
 import Material from "../components/Material";
-import Colors from "../components/Colors";
-import Sizes from "../components/Sizes";
+import ProductSelect from "../components/ProductSelect";
 
 function ProductDetails() {
   const { isLoading, setIsLoading, error, setError } =
     useContext(ProductContext);
-
   const { productId } = useParams();
-  const [product, setProduct] = useState();
-
-  const fetchData = async (productId) => {
-    try {
-      setIsLoading(true);
-      const findProduct = await getSingleProduct(productId);
-      setProduct(findProduct);
-      setIsLoading(false);
-    } catch (error) {
-      setError(error);
-    }
-  };
+  const [product, setProduct] = useState(null);
+  const [selectedSize, setSelectedSize] = useState([]);
+  const [selectedColor, setSelectedColor] = useState([]);
 
   useEffect(() => {
+    const fetchData = async (productId) => {
+      try {
+        setIsLoading(true);
+        const findProduct = await getSingleProduct(productId);
+        setProduct(findProduct);
+        setIsLoading(false);
+      } catch (error) {
+        setError(error);
+      }
+    };
+
     fetchData(productId);
-  }, [productId]);
+  }, [productId, setIsLoading, setError]);
+
+  const sizeOptions =
+    product?.sizes.map((size) => ({
+      value: size.sizeId,
+      label: size.value,
+    })) || [];
+
+  const colorOptions =
+    product?.colors.map((color) => ({
+      value: color.colorId,
+      label: color.value,
+    })) || [];
+
+  const handleAddToCart = (product) => {
+    const productToCart = {
+      image: product.image,
+      id: product.productId,
+      size: selectedSize,
+      color: selectedColor,
+      price: product.price,
+      material: product.material,
+    };
+  };
+
+  const handleSizeChange = (event) => {
+    setSelectedSize(event.target.value);
+  };
+
+  const handleColorChange = (event) => {
+    setSelectedColor(event.target.value);
+  };
 
   if (isLoading) {
     return <p>Product is Loading...</p>;
   }
-  if (!product) {
-    return <p>Product is not available.</p>;
-  }
+
   if (error) {
     return <p>{error.message}</p>;
   }
-  const { image, title, price, colors, sizes, material } = product;
+
+  if (!product) {
+    return <p>Product is not available.</p>;
+  }
+
+  const { image, title, price, material } = product;
+
   return (
     <Container className="productDetailsContainer">
       <Card className="productDetailsCard">
@@ -49,9 +85,30 @@ function ProductDetails() {
         <Card.Body className="productDetailsInfo">
           <h3 className="productDetailsTitle">{title}</h3>
           <Material material={material} />
-          <Sizes sizes={sizes} />
-          <Colors colors={colors} />
+          <ProductSelect
+            htmlFor={product.productId}
+            label="Size"
+            required={true}
+            value={selectedSize}
+            onChange={handleSizeChange}
+            options={sizeOptions}
+          />
+          <ProductSelect
+            htmlFor={product.productId}
+            label="Color"
+            required={true}
+            value={selectedColor}
+            onChange={handleColorChange}
+            options={colorOptions}
+          />
           <h4 className="productDetailsPrice">Price: {price} SAR</h4>
+          <Button
+            className="cart-btn"
+            variant="secondary"
+            onClick={() => handleAddToCart(product)}
+          >
+            Add To Cart
+          </Button>
         </Card.Body>
       </Card>
     </Container>

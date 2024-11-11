@@ -35,7 +35,7 @@ form {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   font-family: Arial, sans-serif;
 }
-.updateImage{
+.updateImage {
   margin-left: 4rem;
   height: 200px;
   width: 200px;
@@ -85,7 +85,7 @@ form button:hover {
 .errors {
   color: rgb(244, 132, 132);
 }
-.warning{
+.warning {
   color: rgb(208, 97, 18);
   display: flex;
   justify-content: center;
@@ -185,18 +185,55 @@ form button:hover {
     padding: 6px;
   }
 }
+.product-select {
+  width: 340px;
+  padding: 4px 8px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #fff;
+  font-size: 1rem;
+  color: #333;
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
 
+.product-select .MuiSelect-icon {
+  color: #888;
+}
+
+.product-select .Mui-selected {
+  background-color: rgba(76, 175, 80, 0.2);
+  color: #333;
+}
+
+.product-select .MuiMenuItem-root:hover {
+  background-color: #f0f0f0;
+}
+
+.product-select .MuiMenuItem-root {
+  padding: 10px 15px;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.product-select .Mui-selected:hover {
+  background-color: rgba(76, 175, 80, 0.3);
+}
 .admin-dashboard {
+  display: flex;
   font-family: Arial, sans-serif;
   background-color: #f5f5f5;
-  padding: 20px;
   color: #333;
+}
+
+.admin-dashboard .dashboard-content {
+  flex: 1;
+  padding: 20px;
 }
 
 .admin-dashboard h3 {
   color: #333;
   margin-bottom: 15px;
-  margin-top: 15px;
   font-size: 1.5rem;
   font-weight: 600;
 }
@@ -246,7 +283,22 @@ form button:hover {
   background-color: #d9363e;
 }
 
+.add-product-btn {
+  width: 200px;
+  height: 50px;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 12px;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s;
+}
+
 @media (max-width: 768px) {
+  .admin-dashboard {
+    flex-direction: column;
+  }
+
   .admin-dashboard table,
   .admin-dashboard th,
   .admin-dashboard td {

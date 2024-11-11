@@ -48,7 +48,7 @@ function ManageProducts() {
   }
 
   return (
-    <div>
+    <div className="dashboard-content">
       <h3>Manage Products</h3>
       <Table responsive>
         <thead>

@@ -19,6 +19,10 @@ import UpdateProduct from "./pages/UpdateProduct";
 import AddProduct from "./pages/AddProduct";
 import { SizeProvider } from "./contexts/SizeContext";
 import { ColorProvider } from "./contexts/ColorContext";
+import ManageUsers from "./components/ManageUsers";
+import ManageAddresses from "./components/ManageAddresses";
+import ManageProducts from "./components/ManageProduct";
+import Cart from "./pages/Cart";
 
 function App() {
   const router = createBrowserRouter([
@@ -47,6 +51,10 @@ function App() {
           element: <Login />,
         },
         {
+          path: "/cart",
+          element: <Cart />,
+        },
+        {
           path: "/",
           element: <ProtectRouteByLogIn />,
           children: [
@@ -67,8 +75,26 @@ function App() {
               element: <ProtectRouteByAdmin />,
               children: [
                 {
-                  path: "/dashboard",
+                  path: "dashboard",
                   element: <Dashboard />,
+                  children: [
+                    {
+                      index: true,
+                      element: <ManageProducts />,
+                    },
+                    {
+                      path: "users",
+                      element: <ManageUsers />,
+                    },
+                    {
+                      path: "addresses",
+                      element: <ManageAddresses />,
+                    },
+                    {
+                      path: "products",
+                      element: <ManageProducts />,
+                    },
+                  ],
                 },
                 {
                   path: "/updateProduct",
