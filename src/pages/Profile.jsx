@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 
 import { UserContext } from "../contexts/UserContext";
 import { deleteUser, getSingleUser } from "../services/userService";
+import { AddressContext } from "../contexts/AddressContext";
 
 function Profile() {
   const {
@@ -15,6 +16,9 @@ function Profile() {
     setLogIn,
     setUserLoggedIn,
   } = useContext(UserContext);
+
+  const { addresses } = useContext(AddressContext);
+
   const [user, setUser] = useState();
 
   const navigate = useNavigate();
@@ -24,6 +28,10 @@ function Profile() {
   const token = userData.token;
 
   const { userId } = useParams();
+
+  const userAddresses = addresses.filter(
+    (address) => address.user.userId === userId
+  );
 
   const fetchData = async (userId, token) => {
     try {
@@ -74,25 +82,55 @@ function Profile() {
           src="../images/personal-photo.png"
           alt="profile picture"
         />
-        <Card.Body className="profileInfo"></Card.Body>
-        <p className="fistName">First Name: {firstName}</p>
-        <p className="lastName">Last Name: {lastName}</p>
-        <p className="email">Email: {email}</p>
-        <p className="phone">Phone Number: {phone}</p>
-        <div className="buttons">
-          <button
-            className="update-btn"
-            onClick={() => navigate("/updateProfile", { state: user })}
-          >
-            Edit Profile
-          </button>
-          <button
-            className="delet-btn"
-            onClick={() => handleDelteProfile(user.userId, token)}
-          >
-            Delete Profile
-          </button>
-        </div>
+        <Card.Body className="profileInfo">
+          <p>
+            <strong>Name:</strong> {firstName} {lastName}
+          </p>
+          <p>
+            <strong>Email:</strong> {email}
+          </p>
+          <p>
+            <strong>Phone Number:</strong> {phone}
+          </p>
+
+          {userAddresses?.map((address) => {
+            return (
+              <div key={address.addressId} className="addressBlock">
+                <h3>Address</h3>
+                <p>
+                  <strong>Address Name:</strong> {address.addressName}
+                </p>
+                <p>
+                  <strong>Street Name:</strong> {address.streetName}
+                </p>
+                <p>
+                  <strong>Street Number:</strong> {address.streetNumber}
+                </p>
+                <p>
+                  <strong>City:</strong> {address.city}
+                </p>
+                <p>
+                  <strong>State:</strong> {address.state}
+                </p>
+              </div>
+            );
+          })}
+
+          <div className="button-container">
+            <button
+              className="update-btn"
+              onClick={() => navigate("/updateProfile", { state: user })}
+            >
+              Edit Profile
+            </button>
+            <button
+              className="delet-btn"
+              onClick={() => handleDelteProfile(user.userId, token)}
+            >
+              Delete Profile
+            </button>
+          </div>
+        </Card.Body>
       </Card>
     </Container>
   );

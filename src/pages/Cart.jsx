@@ -1,7 +1,175 @@
-import React from "react";
+import React, { useContext } from "react";
+import {
+  MDBBtn,
+  MDBCard,
+  MDBCardBody,
+  MDBCardImage,
+  MDBCol,
+  MDBContainer,
+  MDBIcon,
+  MDBInput,
+  MDBRow,
+  MDBTypography,
+} from "mdb-react-ui-kit";
+import { CartContext } from "../contexts/CartContext";
+import { UserContext } from "../contexts/UserContext";
+import { AddressContext } from "../contexts/AddressContext";
 
 function Cart() {
-  return <div>cart page</div>;
+  const { productCart, updateProductQuantity, removeProductFromCart } =
+    useContext(CartContext);
+  const { userLoggedIn } = useContext(UserContext);
+  const { addresses } = useContext(AddressContext);
+
+  const userId = userLoggedIn.nameid;
+
+  const userAddresses = addresses.filter(
+    (address) => address.user.userId === userId
+  );
+  console.log(userAddresses);
+  const handlePlusQuantity = (product) => {
+    let quantity = product.quantity + 1;
+    updateProductQuantity(product.productId, quantity);
+  };
+
+  const handleMinusQuantity = (product) => {
+    let quantity = product.quantity - 1;
+    updateProductQuantity(product.productId, quantity);
+  };
+
+  const handleRemoveProduct = (product) => {
+    removeProductFromCart(product.productId);
+  };
+  return (
+    <section className="h-100" style={{ backgroundColor: "#eee" }}>
+      <MDBContainer className="py-5 h-100">
+        <MDBRow className="justify-content-center align-items-center h-100">
+          <MDBCol md="10">
+            <div className="d-flex justify-content-between align-items-center mb-4">
+              <MDBTypography tag="h3" className="fw-normal mb-0 text-black">
+                {productCart && productCart.length > 0
+                  ? "Shopping Cart"
+                  : "Your cart is empty"}
+              </MDBTypography>
+            </div>
+            {productCart &&
+              productCart.map((product) => {
+                return (
+                  <MDBCard key={product.productId} className="rounded-3 mb-4">
+                    <MDBCardBody className="p-4">
+                      <MDBRow className="justify-content-between align-items-center">
+                        <MDBCol md="2" lg="2" xl="2">
+                          <MDBCardImage
+                            className="rounded-3"
+                            fluid
+                            src={product.image}
+                            alt={product.title}
+                          />
+                        </MDBCol>
+                        <MDBCol md="3" lg="3" xl="3">
+                          <p className="lead fw-normal mb-2">{product.title}</p>
+                          <p>
+                            <span className="text-muted">
+                              Size: {product.size}
+                            </span>
+                          </p>
+                          <p>
+                            <span className="text-muted">
+                              Color: {product.color}
+                            </span>
+                          </p>
+                        </MDBCol>
+                        <MDBCol
+                          md="3"
+                          lg="3"
+                          xl="2"
+                          className="d-flex align-items-center justify-content-around"
+                        >
+                          <MDBBtn
+                            color="link"
+                            className="px-2"
+                            onClick={() => handleMinusQuantity(product)}
+                          >
+                            <MDBIcon fas icon="minus" />
+                          </MDBBtn>
+
+                          <MDBInput
+                            min={0}
+                            value={product.quantity}
+                            type="text"
+                            size="sm"
+                            readOnly
+                            className="text-center"
+                          />
+
+                          <MDBBtn
+                            color="link"
+                            className="px-2"
+                            onClick={() => handlePlusQuantity(product)}
+                          >
+                            <MDBIcon fas icon="plus" />
+                          </MDBBtn>
+                        </MDBCol>
+                        <MDBCol md="3" lg="2" xl="2" className="offset-lg-1">
+                          <MDBTypography tag="h5" className="mb-0">
+                            {product.price} SAR
+                          </MDBTypography>
+                        </MDBCol>
+                        <MDBCol md="1" lg="1" xl="1" className="text-end">
+                          <MDBBtn
+                            color="link"
+                            className="px-2"
+                            onClick={() => handleRemoveProduct(product)}
+                          >
+                            <MDBIcon fas icon="trash text-danger" size="lg" />
+                          </MDBBtn>
+                        </MDBCol>
+                      </MDBRow>
+                    </MDBCardBody>
+                  </MDBCard>
+                );
+              })}
+            <div className="d-flex justify-content-between align-items-center mb-4">
+              <MDBTypography tag="h3" className="fw-normal mb-0 text-black">
+                {productCart && "Shipment Address"}
+              </MDBTypography>
+            </div>
+            {userAddresses?.map((address) => {
+              return (
+                <MDBCard key={address.addressId} className="rounded-3 mb-4">
+                  <MDBCardBody className="p-4">
+                    <MDBRow className="justify-content-between align-items-center">
+                      <MDBCol>
+                        <p className="lead fw-normal mb-2">
+                          Address Name: {address.addressName}
+                        </p>
+                        <p className="lead fw-normal mb-2">
+                          Street Name: {address.streetName}
+                        </p>
+                      </MDBCol>
+                      <MDBCol>
+                        <p className="lead fw-normal mb-2">
+                          Street Number: {address.streetNumber}
+                        </p>
+                        <p className="lead fw-normal mb-2">
+                          City: {address.city}
+                        </p>
+                      </MDBCol>
+                      <MDBCol>
+                        <p className="lead fw-normal mb-2">
+                          State: {address.state}
+                        </p>
+                      </MDBCol>
+                    </MDBRow>
+                  </MDBCardBody>
+                </MDBCard>
+              );
+            })}
+          </MDBCol>
+        </MDBRow>
+      </MDBContainer>
+    </section>
+  );
 }
 
 export default Cart;

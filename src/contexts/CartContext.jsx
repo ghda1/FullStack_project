@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
-
   const cartData = JSON.parse(localStorage.getItem("cart"));
 
   const [productCart, setProductCart] = useState((cartData && cartData) || []);
@@ -48,9 +47,11 @@ export const CartProvider = ({ children }) => {
   };
 
   const updateProductQuantity = (productId, quantity) => {
+    console.log("updateProductQuantity: first");
     setProductCart((prevCart) => {
       const updatedCart = prevCart.map((item) => {
         if (item.productId === productId) {
+          console.log("updateProductQuantity: seconed");
           return { ...item, quantity: Math.max(1, quantity) };
         }
         return item;

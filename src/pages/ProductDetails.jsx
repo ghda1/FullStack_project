@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import { Container } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
@@ -10,10 +10,17 @@ import { getSingleProduct } from "../services/ProductService";
 import Material from "../components/Material";
 import ProductSelect from "../components/ProductSelect";
 import { CartContext } from "../contexts/CartContext";
+import { getSingleSize } from "../services/sizeService";
+import { UserContext } from "../contexts/UserContext";
+import { getSingleColor } from "../services/colorService";
 
 function ProductDetails() {
   const { isLoading, setIsLoading, error, setError } =
     useContext(ProductContext);
+
+  const { token } = useContext(UserContext);
+
+  const navigate = useNavigate();
 
   const { addProductToCart } = useContext(CartContext);
   const { productId } = useParams();
@@ -48,17 +55,20 @@ function ProductDetails() {
       label: color.value,
     })) || [];
 
-  const handleAddToCart = (product) => {
+  const handleAddToCart = async (product) => {
+    const size = await getSingleSize(selectedSize, token);
+    const color = await getSingleColor(selectedColor, token);
     const productToCart = {
       image: product.image,
       title: product.title,
       productId: product.productId,
       material: product.material,
-      size: selectedSize,
-      color: selectedColor,
+      size: size.value,
+      color: color.value,
       price: product.price,
     };
     addProductToCart(productToCart);
+    navigate("/");
   };
 
   const handleSizeChange = (event) => {

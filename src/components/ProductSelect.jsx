@@ -24,7 +24,7 @@ function ProductSelect({ required, value, onChange, options, htmlFor, label }) {
 
 ProductSelect.propTypes = {
   required: PropTypes.bool,
-  value: PropTypes.array,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
   onChange: PropTypes.func,
   options: PropTypes.array,
   label: PropTypes.string,

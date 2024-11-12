@@ -96,8 +96,8 @@ form button:hover {
   display: flex;
   justify-content: center;
   padding: 40px 20px;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .profileCard {
