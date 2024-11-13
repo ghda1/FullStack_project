@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 import FormGroup from "../components/form/FormGroup";
 import FormButton from "../components/form/FormButton";
-import { getAllProducts, updateProduct } from "../services/ProductService";
+
 import { SizeContext } from "../contexts/SizeContext";
 import { ColorContext } from "../contexts/ColorContext";
 import { updateProductFields } from "../components/products/updateProductFields";
@@ -12,6 +12,7 @@ import { UserContext } from "../contexts/UserContext";
 import { ProductContext } from "../contexts/ProductContext";
 import uploadImageToCloudinary from "../utility/UploadImageToCloudinary";
 import PageTitle from "../components/PageTitle";
+import { getAllProducts, updateProduct } from "../services/productService";
 
 function UpdateProfile() {
   const locationState = useLocation();
