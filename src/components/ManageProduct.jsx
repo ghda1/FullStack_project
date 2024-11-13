@@ -3,10 +3,10 @@ import { Table } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
 import { ProductContext } from "../contexts/ProductContext";
-import { deleteProduct, getAllProducts } from "../services/ProductService";
 import PaginationComponent from "./PaginationComponent";
 import SortSelect from "./SortSelect";
 import SearchInput from "./SearchInput";
+import { deleteProduct, getAllProducts } from "../services/productService";
 
 function ManageProducts() {
   const {

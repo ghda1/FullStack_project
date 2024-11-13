@@ -6,7 +6,7 @@ import Button from "react-bootstrap/Button";
 
 import "../components/products/ProductDetails.css";
 import { ProductContext } from "../contexts/ProductContext";
-import { getSingleProduct } from "../services/ProductService";
+
 import Material from "../components/Material";
 import ProductSelect from "../components/ProductSelect";
 import { CartContext } from "../contexts/CartContext";
@@ -14,6 +14,7 @@ import { getSingleSize } from "../services/sizeService";
 import { UserContext } from "../contexts/UserContext";
 import { getSingleColor } from "../services/colorService";
 import PageTitle from "../components/PageTitle";
+import { getSingleProduct } from "../services/productService";
 
 function ProductDetails() {
   const { isLoading, setIsLoading, error, setError } =
