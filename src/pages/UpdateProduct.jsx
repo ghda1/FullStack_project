@@ -10,9 +10,10 @@ import { updateProductFields } from "../components/products/updateProductFields"
 import FormSelectGroup from "../components/form/FormSelectGroup";
 import { UserContext } from "../contexts/UserContext";
 import { ProductContext } from "../contexts/ProductContext";
-import uploadImageToCloudinary from "../utility/UploadImageToCloudinary";
+
 import PageTitle from "../components/PageTitle";
 import { getAllProducts, updateProduct } from "../services/productService";
+import uploadImageToCloudinary from "../utility/UploadImageToCloudinary";
 
 function UpdateProfile() {
   const locationState = useLocation();
