@@ -48,7 +48,6 @@ function ManageProducts() {
     return <h2>{error.message}</h2>;
   }
 
-
   return (
     <div className="dashboard-content">
       <h3>Manage Products</h3>
@@ -112,7 +111,7 @@ function ManageProducts() {
                   </td>
 
                   <td>{quantity}</td>
-                  <td>{price}</td>
+                  <td>{price} SAR</td>
                   <td>
                     <button onClick={() => handleUpdateProduct(product)}>
                       Edit

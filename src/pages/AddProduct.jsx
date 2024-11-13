@@ -111,6 +111,7 @@ export default function AddProduct() {
       <PageTitle title="Add Product" />
       <h2 className="addProductTitle">Add New Product</h2>
       <form className="form" onSubmit={submitHandler}>
+        <p className="warning">Make sure that the image is unique</p>
         {addProductFields.map((field) => {
           return field.type === "select" ? (
             <FormSelectGroup

@@ -34,7 +34,7 @@ function NavBar() {
         <div className="left">
           <Link to="/">Home</Link>
           {isLogIn && <Link to={`/profile/${userId}`}>Profile</Link>}
-          {isLogIn && role === "Admin" && (
+          {role === "Admin" && (
             <Link to="/dashboard">Dashboard</Link>
           )}
         </div>

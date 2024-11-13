@@ -4,7 +4,7 @@ const uploadImageToCloudinary = async (file) => {
   const formData = new FormData();
   formData.append("file", file);
   formData.append("upload_preset", uploadPreset);
-  formData.append("folder", "realEstateWeb");
+  formData.append("folder", "TeeNest");
 
   try {
     const response = await fetch(
