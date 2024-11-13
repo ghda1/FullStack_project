@@ -4,7 +4,6 @@ import { useNavigate, useParams } from "react-router-dom";
 
 import { UserContext } from "../contexts/UserContext";
 import { deleteUser, getSingleUser } from "../services/userService";
-import { AddressContext } from "../contexts/AddressContext";
 
 function Profile() {
   const {
@@ -17,8 +16,6 @@ function Profile() {
     setUserLoggedIn,
   } = useContext(UserContext);
 
-  const { addresses } = useContext(AddressContext);
-
   const [user, setUser] = useState();
 
   const navigate = useNavigate();
@@ -29,14 +26,11 @@ function Profile() {
 
   const { userId } = useParams();
 
-  const userAddresses = addresses.filter(
-    (address) => address.user.userId === userId
-  );
-
   const fetchData = async (userId, token) => {
     try {
       setIsLoading(true);
       const findUser = await getSingleUser(userId, token);
+      console.log(findUser);
       setToken(token);
       setUser(findUser);
       setIsLoading(false);
@@ -59,7 +53,7 @@ function Profile() {
     return <p>{error.message}</p>;
   }
 
-  const { firstName, lastName, email, phone } = user;
+  const { firstName, lastName, email, phone, addresses } = user;
 
   const handleDelteProfile = async (userId, token) => {
     try {
@@ -93,7 +87,7 @@ function Profile() {
             <strong>Phone Number:</strong> {phone}
           </p>
 
-          {userAddresses?.map((address) => {
+          {addresses?.map((address) => {
             return (
               <div key={address.addressId} className="addressBlock">
                 <h3>Address</h3>

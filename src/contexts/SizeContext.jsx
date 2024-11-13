@@ -1,7 +1,6 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 
-import { UserContext } from "./UserContext";
 import { getAllSizes } from "../services/sizeService";
 
 export const SizeContext = createContext();
@@ -11,12 +10,10 @@ export const SizeProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const { token } = useContext(UserContext);
-
-  const fetchData = async (token) => {
+  const fetchData = async () => {
     try {
       setIsLoading(true);
-      const sizesData = await getAllSizes(token);
+      const sizesData = await getAllSizes();
       setSizes(sizesData);
       setIsLoading(false);
     } catch (error) {
@@ -25,7 +22,7 @@ export const SizeProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    fetchData(token);
+    fetchData();
   }, []);
 
   return (
@@ -37,7 +34,6 @@ export const SizeProvider = ({ children }) => {
         setIsLoading,
         error,
         setError,
-        token,
       }}
     >
       {children}

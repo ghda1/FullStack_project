@@ -12,6 +12,7 @@ export default function Product(props) {
   const { product } = props;
   const { productId, image, title, price } = product;
   const navigate = useNavigate();
+  
   return (
     <Card className="productCard">
       <Image image={image} title={title} />

@@ -11,22 +11,13 @@ import {
   MDBRow,
   MDBTypography,
 } from "mdb-react-ui-kit";
+
 import { CartContext } from "../contexts/CartContext";
-import { UserContext } from "../contexts/UserContext";
-import { AddressContext } from "../contexts/AddressContext";
 
 function Cart() {
   const { productCart, updateProductQuantity, removeProductFromCart } =
     useContext(CartContext);
-  const { userLoggedIn } = useContext(UserContext);
-  const { addresses } = useContext(AddressContext);
 
-  const userId = userLoggedIn.nameid;
-
-  const userAddresses = addresses.filter(
-    (address) => address.user.userId === userId
-  );
-  console.log(userAddresses);
   const handlePlusQuantity = (product) => {
     let quantity = product.quantity + 1;
     updateProductQuantity(product.productId, quantity);
@@ -40,6 +31,7 @@ function Cart() {
   const handleRemoveProduct = (product) => {
     removeProductFromCart(product.productId);
   };
+
   return (
     <section className="h-100" style={{ backgroundColor: "#eee" }}>
       <MDBContainer className="py-5 h-100">
@@ -129,42 +121,6 @@ function Cart() {
                   </MDBCard>
                 );
               })}
-            <div className="d-flex justify-content-between align-items-center mb-4">
-              <MDBTypography tag="h3" className="fw-normal mb-0 text-black">
-                {productCart && "Shipment Address"}
-              </MDBTypography>
-            </div>
-            {userAddresses?.map((address) => {
-              return (
-                <MDBCard key={address.addressId} className="rounded-3 mb-4">
-                  <MDBCardBody className="p-4">
-                    <MDBRow className="justify-content-between align-items-center">
-                      <MDBCol>
-                        <p className="lead fw-normal mb-2">
-                          Address Name: {address.addressName}
-                        </p>
-                        <p className="lead fw-normal mb-2">
-                          Street Name: {address.streetName}
-                        </p>
-                      </MDBCol>
-                      <MDBCol>
-                        <p className="lead fw-normal mb-2">
-                          Street Number: {address.streetNumber}
-                        </p>
-                        <p className="lead fw-normal mb-2">
-                          City: {address.city}
-                        </p>
-                      </MDBCol>
-                      <MDBCol>
-                        <p className="lead fw-normal mb-2">
-                          State: {address.state}
-                        </p>
-                      </MDBCol>
-                    </MDBRow>
-                  </MDBCardBody>
-                </MDBCard>
-              );
-            })}
           </MDBCol>
         </MDBRow>
       </MDBContainer>

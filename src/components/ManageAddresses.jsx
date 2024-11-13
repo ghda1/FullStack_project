@@ -1,12 +1,36 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Table } from "react-bootstrap";
 
 import { AddressContext } from "../contexts/AddressContext";
 import { deleteAddress, getAllAddresses } from "../services/addressService";
 
 function ManageAddresses() {
-  const { addresses, setAddresses, isLoading, error, token } =
-    useContext(AddressContext);
+  const {
+    addresses,
+    setAddresses,
+    isLoading,
+    setIsLoading,
+    error,
+    setError,
+    token,
+  } = useContext(AddressContext);
+
+  const fetchData = async (token) => {
+    try {
+      setIsLoading(true);
+      const addressData = await getAllAddresses(token);
+      setAddresses(addressData);
+      setIsLoading(false);
+    } catch (error) {
+      setError(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchData(token);
+  }, []);
+
+  console.log(addresses);
 
   const handleDelteAddress = async (addressId, token) => {
     await deleteAddress(addressId, token);

@@ -48,9 +48,6 @@ function ManageProducts() {
     return <h2>{error.message}</h2>;
   }
 
-  if (!products) {
-    return <h2>There is no products</h2>;
-  }
 
   return (
     <div className="dashboard-content">
@@ -59,85 +56,91 @@ function ManageProducts() {
         <SearchInput setSearchQuery={setSearchQuery} />
         <SortSelect setSortBy={setSortBy} setSortOrder={setSortOrder} />
       </div>
-      <Table responsive>
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Product ID</th>
-            <th>Image</th>
-            <th>Title</th>
-            <th>Material</th>
-            <th>Colors</th>
-            <th>Sizes</th>
-            <th>Quantity</th>
-            <th>Price</th>
-            <th>Edit</th>
-            <th>Delete</th>
-          </tr>
-        </thead>
-        <tbody>
-          {products.map((product, index) => {
-            const {
-              productId,
-              image,
-              title,
-              price,
-              material,
-              colors,
-              sizes,
-              quantity,
-            } = product;
-            return (
-              <tr key={productId}>
-                <td>{++index}</td>
-                <td>{productId}</td>
-                <td>
-                  <img src={image} title={title}></img>
-                </td>
-                <td>{title}</td>
-                <td>{material}</td>
-                <td>
-                  {colors.map((color, index) => (
-                    <span key={index}>
-                      {color.value}
-                      <br />
-                    </span>
-                  ))}
-                </td>
-                <td>
-                  {sizes.map((size, index) => (
-                    <span key={index}>
-                      {size.value}
-                      <br />
-                    </span>
-                  ))}
-                </td>
+      {products && products ? (
+        <Table responsive>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Product ID</th>
+              <th>Image</th>
+              <th>Title</th>
+              <th>Material</th>
+              <th>Colors</th>
+              <th>Sizes</th>
+              <th>Quantity</th>
+              <th>Price</th>
+              <th>Edit</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            {products.map((product, index) => {
+              const {
+                productId,
+                image,
+                title,
+                price,
+                material,
+                colors,
+                sizes,
+                quantity,
+              } = product;
+              return (
+                <tr key={productId}>
+                  <td>{++index}</td>
+                  <td>{productId}</td>
+                  <td>
+                    <img src={image} title={title}></img>
+                  </td>
+                  <td>{title}</td>
+                  <td>{material}</td>
+                  <td>
+                    {colors.map((color, index) => (
+                      <span key={index}>
+                        {color.value}
+                        <br />
+                      </span>
+                    ))}
+                  </td>
+                  <td>
+                    {sizes.map((size, index) => (
+                      <span key={index}>
+                        {size.value}
+                        <br />
+                      </span>
+                    ))}
+                  </td>
 
-                <td>{quantity}</td>
-                <td>{price}</td>
-                <td>
-                  <button onClick={() => handleUpdateProduct(product)}>
-                    Edit
-                  </button>
-                </td>
-                <td>
-                  <button onClick={() => handleDelteProduct(productId, token)}>
-                    Delete
-                  </button>
-                </td>
-              </tr>
-            );
-          })}
-          <td>
-            <button
-              className="add-product-btn"
-              onClick={() => handleAddProduct()}
-            >
-              Add New Product
-            </button>
-          </td>
-        </tbody>
-      </Table>
+                  <td>{quantity}</td>
+                  <td>{price}</td>
+                  <td>
+                    <button onClick={() => handleUpdateProduct(product)}>
+                      Edit
+                    </button>
+                  </td>
+                  <td>
+                    <button
+                      onClick={() => handleDelteProduct(productId, token)}
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              );
+            })}
+            <td>
+              <button
+                className="add-product-btn"
+                onClick={() => handleAddProduct()}
+              >
+                Add New Product
+              </button>
+            </td>
+          </tbody>
+        </Table>
+      ) : (
+        <h2>There is no products</h2>
+      )}
       <PaginationComponent
         pageNumber={pageNumber}
         setPagaeNumber={setPagaeNumber}

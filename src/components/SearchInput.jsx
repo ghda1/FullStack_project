@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 
 function SearchInput({ setSearchQuery }) {
+
   const handleSearching = (event) => {
     event.preventDefault();
     setTimeout(() => {

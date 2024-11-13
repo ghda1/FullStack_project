@@ -12,21 +12,6 @@ export const AddressProvider = ({ children }) => {
 
   const { token } = useContext(UserContext);
 
-  const fetchData = async (token) => {
-    try {
-      setIsLoading(true);
-      const addressData = await getAllAddresses(token);
-      setAddresses(addressData);
-      setIsLoading(false);
-    } catch (error) {
-      setError(error);
-    }
-  };
-
-  useEffect(() => {
-    fetchData(token);
-  }, []);
-
   return (
     <AddressContext.Provider
       value={{

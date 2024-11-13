@@ -18,19 +18,7 @@ export const UserProvider = ({ children }) => {
   );
   const [role, setRole] = useState((userLoggedIn && userLoggedIn.role) || null);
 
-  const fetchData = async (token) => {
-    try {
-      setIsLoading(true);
-      const usersData = await getAllUsers(token);
-      setUsers(usersData);
-      setIsLoading(false);
-    } catch (error) {
-      setError(error);
-    }
-  };
-
   useEffect(() => {
-    fetchData(token);
     const userData = JSON.parse(localStorage.getItem("userData"));
     if (userData) {
       setLogIn(userData.isLogIn);
