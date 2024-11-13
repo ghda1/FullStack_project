@@ -1,8 +1,8 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 
-import { getAllProducts } from "../services/ProductService";
 import { UserContext } from "./UserContext";
+import { getAllProducts } from "../services/productService";
 
 export const ProductContext = createContext();
 
@@ -17,7 +17,7 @@ export const ProductProvider = ({ children }) => {
   const [sortBy, setSortBy] = useState("title");
   const [sortOrder, setSortOrder] = useState("asc");
 
-    const { token } = useContext(UserContext);
+  const { token } = useContext(UserContext);
 
   const fetchData = async (
     pageNumber,
