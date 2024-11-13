@@ -13,6 +13,7 @@ import { CartContext } from "../contexts/CartContext";
 import { getSingleSize } from "../services/sizeService";
 import { UserContext } from "../contexts/UserContext";
 import { getSingleColor } from "../services/colorService";
+import PageTitle from "../components/PageTitle";
 
 function ProductDetails() {
   const { isLoading, setIsLoading, error, setError } =
@@ -95,6 +96,7 @@ function ProductDetails() {
 
   return (
     <Container className="productDetailsContainer">
+      <PageTitle title="Product Details" />
       <Card className="productDetailsCard">
         <img className="productDetailsImage" src={image} alt={title} />
         <Card.Body className="productDetailsInfo">

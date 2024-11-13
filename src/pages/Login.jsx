@@ -8,6 +8,7 @@ import { UserContext } from "../contexts/UserContext";
 import { logInFields } from "../components/user/logInFields";
 import { logInUser } from "../services/userService";
 import FormError from "../components/form/FormError";
+import PageTitle from "../components/PageTitle";
 
 export default function Login() {
   const initialValue = {
@@ -83,6 +84,7 @@ export default function Login() {
   };
   return (
     <div className="logInForm">
+      <PageTitle title="Log in" />
       <h2 className="logInTitle">Log In</h2>
       <p className="welcoming">please sign in to continue</p>
       <form className="form" onSubmit={submitHandler}>

@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 
 import { UserContext } from "../contexts/UserContext";
 import { deleteUser, getSingleUser } from "../services/userService";
+import PageTitle from "../components/PageTitle";
 
 function Profile() {
   const {
@@ -70,6 +71,7 @@ function Profile() {
 
   return (
     <Container className="profileContianer">
+      <PageTitle title="Profile" />
       <Card className="profileCard">
         <img
           className="profileImage"

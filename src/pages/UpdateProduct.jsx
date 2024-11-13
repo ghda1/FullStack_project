@@ -11,6 +11,7 @@ import FormSelectGroup from "../components/form/FormSelectGroup";
 import { UserContext } from "../contexts/UserContext";
 import { ProductContext } from "../contexts/ProductContext";
 import uploadImageToCloudinary from "../utility/UploadImageToCloudinary";
+import PageTitle from "../components/PageTitle";
 
 function UpdateProfile() {
   const locationState = useLocation();
@@ -122,6 +123,7 @@ function UpdateProfile() {
 
   return (
     <div className="updateForm">
+      <PageTitle title="Update Product" />
       <h2 className="updateTitle">Update Profile</h2>
       <form className="form" onSubmit={submitHandler}>
         <img className="updateImage" src={image} alt={title} />

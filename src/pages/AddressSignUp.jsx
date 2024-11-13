@@ -5,6 +5,7 @@ import FormGroup from "../components/form/FormGroup";
 import FormButton from "../components/form/FormButton";
 import { addAddress } from "../services/addressService";
 import { addressFields } from "../components/address/addressFieldes";
+import PageTitle from "../components/PageTitle";
 
 export default function AddressSignUp() {
   const userIdState = useLocation();
@@ -82,6 +83,7 @@ export default function AddressSignUp() {
   };
   return (
     <div className="signUpForm">
+      <PageTitle title="Address SignUp" />
       <h2 className="signUpTitle">Address Information</h2>
       <form className="form" onSubmit={submitHandler}>
         {addressFields.map((field) => {

@@ -10,6 +10,7 @@ import { ColorContext } from "../contexts/ColorContext";
 import { addProductFields } from "../components/products/addProductFields";
 import FormGroup from "../components/form/FormGroup";
 import FormSelectGroup from "../components/form/FormSelectGroup";
+import PageTitle from "../components/PageTitle";
 
 export default function AddProduct() {
   const initialValue = {
@@ -107,6 +108,7 @@ export default function AddProduct() {
   };
   return (
     <div className="addProductForm">
+      <PageTitle title="Add Product" />
       <h2 className="addProductTitle">Add New Product</h2>
       <form className="form" onSubmit={submitHandler}>
         {addProductFields.map((field) => {

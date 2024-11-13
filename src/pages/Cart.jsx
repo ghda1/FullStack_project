@@ -13,6 +13,7 @@ import {
 } from "mdb-react-ui-kit";
 
 import { CartContext } from "../contexts/CartContext";
+import PageTitle from "../components/PageTitle";
 
 function Cart() {
   const { productCart, updateProductQuantity, removeProductFromCart } =
@@ -34,6 +35,7 @@ function Cart() {
 
   return (
     <section className="h-100" style={{ backgroundColor: "#eee" }}>
+      <PageTitle title="Cart" />
       <MDBContainer className="py-5 h-100">
         <MDBRow className="justify-content-center align-items-center h-100">
           <MDBCol md="10">

@@ -4,6 +4,7 @@ import Products from "../components/products/Products";
 import SearchInput from "../components/SearchInput";
 import SortSelect from "../components/SortSelect";
 import { ProductContext } from "../contexts/ProductContext";
+import PageTitle from "../components/PageTitle";
 
 function Home() {
   const {
@@ -16,6 +17,7 @@ function Home() {
   } = useContext(ProductContext);
   return (
     <>
+      <PageTitle title="Home" />
       <div className="search-sort">
         <SearchInput setSearchQuery={setSearchQuery} />
         <SortSelect setSortBy={setSortBy} setSortOrder={setSortOrder} />

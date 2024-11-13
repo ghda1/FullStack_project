@@ -5,6 +5,7 @@ import { signUpFields } from "../components/user/signUpFields";
 import FormGroup from "../components/form/FormGroup";
 import FormButton from "../components/form/FormButton";
 import { registerUser } from "../services/userService";
+import PageTitle from "../components/PageTitle";
 
 export default function Signup() {
   const initialValue = {
@@ -76,6 +77,7 @@ export default function Signup() {
   };
   return (
     <div className="signUpForm">
+      <PageTitle title="SignUp" />
       <h2 className="signUpTitle">Sign Up</h2>
       <p className="welcoming">Welcome, please sign up to join us</p>
       <form className="form" onSubmit={submitHandler}>

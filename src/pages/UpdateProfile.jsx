@@ -4,6 +4,7 @@ import { updateUserFields } from "../components/user/updateUserFields";
 import FormGroup from "../components/form/FormGroup";
 import FormButton from "../components/form/FormButton";
 import { getSingleUser, updateUser } from "../services/userService";
+import PageTitle from "../components/PageTitle";
 
 function UpdateProfile() {
   const locationState = useLocation();
@@ -72,6 +73,7 @@ function UpdateProfile() {
 
   return (
     <div className="updateForm">
+      <PageTitle title="Update Profile" />
       <h2 className="updateTitle">Update Profile</h2>
       <form className="form" onSubmit={submitHandler}>
         {updateUserFields.map((field) => {
