@@ -1,3 +1,5 @@
+
+/* Styling the form */
 .signUpForm,
 .logInForm,
 .updateForm,
@@ -30,7 +32,7 @@ form {
   max-width: 400px;
   padding: 20px;
   margin: 0 auto;
-  background-color: #f3f3f3;
+  background-color: #ffffff;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   font-family: Arial, sans-serif;
@@ -68,7 +70,7 @@ form input:focus {
 form button {
   width: 95%;
   padding: 10px;
-  background-color: #b7b7b7;
+  background-color: #9ca986;
   color: rgb(15, 14, 14);
   font-size: 16px;
   border: none;
@@ -80,7 +82,7 @@ form button {
 }
 
 form button:hover {
-  background-color: #9c9b9b;
+  background-color: #acb994;
 }
 .errors {
   color: rgb(244, 132, 132);
@@ -91,6 +93,8 @@ form button:hover {
   justify-content: center;
   margin: 20px;
 }
+
+/* Styling the profile page */
 
 .profileContianer {
   display: flex;
@@ -105,7 +109,7 @@ form button:hover {
   width: 100%;
   padding: 20px;
   border-radius: 10px;
-  background-color: #f3f3f3;
+  background-color: #f9f9f9;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
   margin: 0 auto;
@@ -185,9 +189,11 @@ form button:hover {
     padding: 6px;
   }
 }
+
+/* multi select in add product form */
 .product-select {
   width: 340px;
-height: 40px;
+  height: 40px;
   border: 1px solid #ccc;
   border-radius: 8px;
   background-color: #fff;
@@ -219,6 +225,8 @@ height: 40px;
 .product-select .Mui-selected:hover {
   background-color: rgba(76, 175, 80, 0.3);
 }
+
+/* Styling admin dashboard */
 .admin-dashboard {
   display: flex;
   font-family: Arial, sans-serif;
@@ -265,11 +273,13 @@ height: 40px;
   font-weight: 600;
 }
 
-.admin-dashboard tbody tr:hover {
+.admin-dashboard tbody tr:hover,
+.add-product-btn:hover {
   background-color: #f9f9f9;
 }
 
-.admin-dashboard td button {
+.admin-dashboard td button,
+.add-product-btn {
   background-color: #d87a7c;
   color: #fff;
   padding: 8px 12px;
@@ -279,10 +289,10 @@ height: 40px;
   transition: background-color 0.3s;
 }
 
-.admin-dashboard td button:hover {
+.admin-dashboard td button:hover,
+.add-product-btn:hover {
   background-color: #d9363e;
 }
-
 .add-product-btn {
   width: 200px;
   height: 50px;
@@ -292,11 +302,49 @@ height: 40px;
   cursor: pointer;
   border: none;
   transition: background-color 0.3s;
+  margin-bottom: 1rem;
 }
 
+/* Responsive Design for Medium Screens */
+@media (max-width: 1024px) and (min-width: 768px) {
+  .dashboard-content {
+    padding: 15px;
+  }
+
+  .admin-dashboard h3 {
+    font-size: 1.4rem;
+  }
+
+  .add-product-btn {
+    width: 100%;
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+
+  .admin-dashboard table {
+    font-size: 0.9rem;
+  }
+
+  .admin-dashboard th,
+  .admin-dashboard td {
+    padding: 10px;
+  }
+}
+
+/* Responsive Design for Small Screens */
 @media (max-width: 768px) {
   .admin-dashboard {
     flex-direction: column;
+  }
+
+  .search-sort {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .add-product-btn {
+    width: 100%;
   }
 
   .admin-dashboard table,
@@ -313,6 +361,7 @@ height: 40px;
     border-bottom: none;
     position: relative;
     padding-left: 50%;
+    margin-bottom: 8px;
   }
 
   .admin-dashboard td::before {
@@ -323,4 +372,54 @@ height: 40px;
     text-transform: uppercase;
     color: #888;
   }
+
+  .admin-dashboard img {
+    height: 60px;
+    width: 50px;
+  }
+}
+
+/* Very Small Screens */
+@media (max-width: 480px) {
+  .admin-dashboard h3 {
+    font-size: 1.2rem;
+  }
+
+  .add-product-btn {
+    font-size: 0.9rem;
+    padding: 6px 10px;
+    height: auto;
+  }
+
+  .admin-dashboard td {
+    padding-left: 40%;
+  }
+
+  .admin-dashboard td::before {
+    left: 10px;
+  }
+}
+
+
+
+/* styling the cart page */
+
+.fixed-button {
+  text-decoration: none !important;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.payment-btn {
+  margin: 2rem;
+  background-color: #b1abab;
+  color: #0d0202;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }

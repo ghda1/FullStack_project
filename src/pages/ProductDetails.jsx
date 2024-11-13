@@ -19,6 +19,8 @@ function ProductDetails() {
   const { isLoading, setIsLoading, error, setError } =
     useContext(ProductContext);
 
+  const [errors, setErrors] = useState({});
+
   const { token } = useContext(UserContext);
 
   const navigate = useNavigate();
@@ -57,19 +59,25 @@ function ProductDetails() {
     })) || [];
 
   const handleAddToCart = async (product) => {
-    const size = await getSingleSize(selectedSize, token);
-    const color = await getSingleColor(selectedColor, token);
-    const productToCart = {
-      image: product.image,
-      title: product.title,
-      productId: product.productId,
-      material: product.material,
-      size: size.value,
-      color: color.value,
-      price: product.price,
-    };
-    addProductToCart(productToCart);
-    navigate("/");
+    const newErrors = {};
+    if (selectedSize.length == 0 || selectedColor.length == 0) {
+      newErrors.null = "You Should Choose Color and Size";
+      setErrors(newErrors);
+    } else {
+      const size = await getSingleSize(selectedSize, token);
+      const color = await getSingleColor(selectedColor, token);
+      const productToCart = {
+        image: product.image,
+        title: product.title,
+        productId: product.productId,
+        material: product.material,
+        size: size.value,
+        color: color.value,
+        price: product.price,
+      };
+      addProductToCart(productToCart);
+      navigate("/products");
+    }
   };
 
   const handleSizeChange = (event) => {
@@ -118,12 +126,9 @@ function ProductDetails() {
             onChange={handleColorChange}
             options={colorOptions}
           />
+          {errors && <p className="errors">{errors.null}</p>}
           <h4 className="productDetailsPrice">Price: {price} SAR</h4>
-          <Button
-            className="cart-btn"
-            variant="secondary"
-            onClick={() => handleAddToCart(product)}
-          >
+          <Button className="cart-btn" onClick={() => handleAddToCart(product)}>
             Add To Cart
           </Button>
         </Card.Body>

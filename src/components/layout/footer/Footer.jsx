@@ -1,24 +1,17 @@
 import GitHubIcon from "@mui/icons-material/GitHub";
 import EmailIcon from "@mui/icons-material/Email";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import { Link } from "react-router-dom";
+
 
 import "./Footer.css";
-import { useContext } from "react";
-import { UserContext } from "../../../contexts/UserContext";
 
 function Footer() {
-  const { isLogIn } = useContext(UserContext);
 
   const year = new Date().getFullYear();
 
   return (
     <footer className="footer">
       <p className="copyright">Developed by Ghadah &copy; {year}</p>
-      <div>
-        <Link to="/">Products</Link>
-        {!isLogIn && <Link to="/signup">SignUp</Link>}
-      </div>
       <div className="contact">
         <a href="https://github.com/ghda1" target="_blank">
           <GitHubIcon />

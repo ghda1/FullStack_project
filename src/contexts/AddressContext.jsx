@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import { getAllAddresses } from "../services/addressService";
+
 import { UserContext } from "./UserContext";
 
 export const AddressContext = createContext();

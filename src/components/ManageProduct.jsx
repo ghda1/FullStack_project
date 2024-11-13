@@ -55,6 +55,9 @@ function ManageProducts() {
         <SearchInput setSearchQuery={setSearchQuery} />
         <SortSelect setSortBy={setSortBy} setSortOrder={setSortOrder} />
       </div>
+      <button className="add-product-btn" onClick={() => handleAddProduct()}>
+        Add New Product
+      </button>
       {products && products ? (
         <Table responsive>
           <thead>
@@ -127,14 +130,6 @@ function ManageProducts() {
                 </tr>
               );
             })}
-            <td>
-              <button
-                className="add-product-btn"
-                onClick={() => handleAddProduct()}
-              >
-                Add New Product
-              </button>
-            </td>
           </tbody>
         </Table>
       ) : (

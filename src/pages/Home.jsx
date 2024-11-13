@@ -1,34 +1,38 @@
-import { useContext } from "react";
-import PaginationComponent from "../components/PaginationComponent";
+import React from "react";
 import Products from "../components/products/Products";
-import SearchInput from "../components/SearchInput";
-import SortSelect from "../components/SortSelect";
-import { ProductContext } from "../contexts/ProductContext";
-import PageTitle from "../components/PageTitle";
+import { useNavigate } from "react-router-dom";
+import NavBar from "../components/layout/navbar/NavBar";
 
 function Home() {
-  const {
-    pageNumber,
-    setPagaeNumber,
-    setSearchQuery,
-    setSortBy,
-    setSortOrder,
-    totalPages,
-  } = useContext(ProductContext);
+  const navigate = useNavigate();
   return (
-    <>
-      <PageTitle title="Home" />
-      <div className="search-sort">
-        <SearchInput setSearchQuery={setSearchQuery} />
-        <SortSelect setSortBy={setSortBy} setSortOrder={setSortOrder} />
+    <div className="homePage">
+      <NavBar />
+      <div className="hero-section">
+        <img
+          src="../images/IMG_7918.JPG"
+          alt="Home Page image"
+          className="hero-image"
+        />
+        <div className="hero-text">
+          <h2>Welcome to TeeNest</h2>
+          <p>
+            Step into a world of style where every t-shirt tells a story. At
+            TeeNest, we believe that what you wear should be as unique as you
+            are. Each tee in our collection is designed with creativity,
+            comfort, and quality in mind, giving you a look that stands out and
+            feels great.
+          </p>
+        </div>
       </div>
-      <Products />
-      <PaginationComponent
-        pageNumber={pageNumber}
-        setPagaeNumber={setPagaeNumber}
-        totalPages={totalPages}
-      />
-    </>
+      <div className="product-section">
+        <h2>Our Products</h2>
+        <Products />
+        <button className="show-more-btn" onClick={() => navigate("/products")}>
+          Load More
+        </button>
+      </div>
+    </div>
   );
 }
 

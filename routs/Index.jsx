@@ -2,7 +2,6 @@ import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import Layout from "../src/components/layout/Layout";
-import Home from "../src/pages/Home";
 import ProductDetails from "../src/pages/ProductDetails";
 import Signup from "../src/pages/Signup";
 import AddressSignUp from "../src/pages/AddressSignUp";
@@ -18,16 +17,23 @@ import ManageUsers from "../src/components/ManageUsers";
 import ManageAddresses from "../src/components/ManageAddresses";
 import UpdateProduct from "../src/pages/UpdateProduct";
 import AddProduct from "../src/pages/AddProduct";
+import ListProduct from "../src/pages/ListProduct";
+import Home from "../src/pages/Home";
 
 function Index() {
   const router = createBrowserRouter([
+    { path: "/", element: <Home /> },
+    {
+      path: "/signOut",
+      element: <Home />,
+    },
     {
       path: "/",
       element: <Layout />,
       children: [
         {
-          path: "/",
-          element: <Home />,
+          path: "/products",
+          element: <ListProduct />,
         },
         {
           path: "/productDetails/:productId",
@@ -53,10 +59,6 @@ function Index() {
           path: "/",
           element: <ProtectRouteByLogIn />,
           children: [
-            {
-              path: "/signOut",
-              element: <Home />,
-            },
             {
               path: "/profile/:userId",
               element: <Profile />,

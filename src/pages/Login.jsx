@@ -9,6 +9,7 @@ import { logInFields } from "../components/user/logInFields";
 import { logInUser } from "../services/userService";
 import FormError from "../components/form/FormError";
 import PageTitle from "../components/PageTitle";
+import { ClipLoader } from "react-spinners";
 
 export default function Login() {
   const initialValue = {
@@ -18,9 +19,15 @@ export default function Login() {
 
   const [user, setUser] = useState(initialValue);
   const [errors, setErrors] = useState({});
-  const { setLogIn, setToken, setUserLoggedIn } = useContext(UserContext);
+  const { setLogIn, setIsLoading, isLoading, setToken, setUserLoggedIn } =
+    useContext(UserContext);
   const navigate = useNavigate();
 
+  const override = {
+    display: "block",
+    margin: "1rem",
+    borderColor: "black",
+  };
   const handleChange = (event) => {
     setUser((prevState) => {
       return { ...prevState, [event.target.name]: event.target.value };
@@ -51,7 +58,7 @@ export default function Login() {
   };
   const submitHandler = async (event) => {
     event.preventDefault();
-
+    setIsLoading(true);
     if (isValidateForm()) {
       const userData = {
         email: user.email,
@@ -72,8 +79,9 @@ export default function Login() {
               token: userToken,
             })
           );
+          setIsLoading(false);
           restValues();
-          navigate("/");
+          navigate("/products");
         }
       } catch {
         const newErrors = {};
@@ -82,6 +90,7 @@ export default function Login() {
       }
     }
   };
+
   return (
     <div className="logInForm">
       <PageTitle title="Log in" />
@@ -105,6 +114,17 @@ export default function Login() {
         })}
         {errors.signIn && <FormError error={errors.signIn} />}
         <FormButton type="submit">Log In</FormButton>
+        {isLoading && (
+          <ClipLoader
+            color="#000000"
+            loading={isLoading}
+            cssOverride={override}
+            size={35}
+            aria-label="Loading Spinner"
+            data-testid="loader"
+            speedMultiplier
+          />
+        )}
         <p className="signInToSignUp">You do not have an account?</p>
         <Link className="navigateToSignUp" onClick={() => navigate("/signUp")}>
           Sign Up

@@ -1,3 +1,101 @@
+main {
+  background-color: #dfdfdf;
+}
+/* styling home Page */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.homePage {
+  background-color: #dfdfdf;
+  font-family: Arial, sans-serif;
+  color: #333;
+  text-align: center;
+}
+
+/* Hero Section */
+.hero-section {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 1rem;
+}
+
+.hero-image {
+  width: 100%;
+  object-fit: cover;
+  filter: brightness(90%);
+}
+
+.hero-text {
+  position: absolute;
+  color: #fff;
+  max-width: 80%;
+  padding: 1rem;
+}
+
+.hero-text h2 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.hero-text p {
+  font-size: 1.2rem;
+  line-height: 1.5;
+}
+
+.product-section {
+  padding: 3rem 1rem;
+}
+
+.product-section h2 {
+  margin-bottom: 2rem;
+  font-size: 2rem;
+}
+
+.show-more-btn {
+  background-color: #b3bf9f;
+  border: none;
+  border-radius: 20px;
+  color: #333;
+  font-weight: bold;
+  margin: 1.5rem auto;
+  width: 160px;
+  height: 40px;
+  transition: background-color 0.1s;
+}
+
+.show-more-btn:hover {
+  background-color: #a3af8f;
+}
+
+@media (min-width: 768px) {
+  .hero-text h2 {
+    font-size: 3rem;
+  }
+  .hero-text p {
+    font-size: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-section {
+    padding: 4rem;
+  }
+  .product-section {
+    padding: 4rem 2rem;
+  }
+  .show-more-btn {
+    width: 200px;
+  }
+}
+
+
+/*styling the search, sort, and pagination components */
 .search-sort {
   display: flex;
   justify-content: center;

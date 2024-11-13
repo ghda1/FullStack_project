@@ -1,6 +1,5 @@
 import { createContext, useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import { getAllUsers } from "../services/userService";
 
 export const UserContext = createContext();
 
@@ -26,7 +25,7 @@ export const UserProvider = ({ children }) => {
       setUserLoggedIn(userData.userData);
       setRole(userLoggedIn.role);
     }
-  }, []);
+  }, [isLogIn]);
 
   return (
     <UserContext.Provider
