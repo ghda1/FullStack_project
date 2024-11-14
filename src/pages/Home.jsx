@@ -2,11 +2,13 @@ import React from "react";
 import Products from "../components/products/Products";
 import { useNavigate } from "react-router-dom";
 import NavBar from "../components/layout/navbar/NavBar";
+import PageTitle from "../components/PageTitle";
 
 function Home() {
   const navigate = useNavigate();
   return (
     <div className="homePage">
+      <PageTitle title="Home" />
       <NavBar />
       <div className="hero-section">
         <img
