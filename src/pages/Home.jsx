@@ -12,7 +12,7 @@ function Home() {
       <NavBar />
       <div className="hero-section">
         <img
-          src="../images/IMG_7918.JPG"
+          src="/images/IMG_7918.JPG"
           alt="Home Page image"
           className="hero-image"
         />
