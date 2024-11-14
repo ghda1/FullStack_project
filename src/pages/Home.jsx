@@ -3,7 +3,7 @@ import Products from "../components/products/Products";
 import { useNavigate } from "react-router-dom";
 import NavBar from "../components/layout/navbar/NavBar";
 import PageTitle from "../components/PageTitle";
-import homeImage from "/images/IMG_7918.JPG";
+import homeImage from "/images/IMG_7918.png";
 
 function Home() {
   const navigate = useNavigate();
