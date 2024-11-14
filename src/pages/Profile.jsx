@@ -26,13 +26,12 @@ function Profile() {
 
   const token = userData.token;
 
-  const { userId } = useParams();
+  const userId = setUserLoggedIn.nameid;
 
   const fetchData = async (userId, token) => {
     try {
       setIsLoading(true);
       const findUser = await getSingleUser(userId, token);
-      console.log(findUser);
       setToken(token);
       setUser(findUser);
       setIsLoading(false);

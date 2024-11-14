@@ -12,7 +12,7 @@ export default function Product(props) {
   const { product } = props;
   const { productId, image, title, price } = product;
   const navigate = useNavigate();
-  
+
   return (
     <Card className="productCard">
       <Image image={image} title={title} />
@@ -22,7 +22,7 @@ export default function Product(props) {
         <Button
           className="details-btn"
           variant="secondary"
-          onClick={() => navigate(`/productDetails/${productId}`)}
+          onClick={() => navigate(`/productDetails`, { state: productId })}
         >
           Details
         </Button>

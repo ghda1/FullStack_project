@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import { Container } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
@@ -23,6 +23,7 @@ function ProductDetails() {
   const [errors, setErrors] = useState({});
 
   const { token } = useContext(UserContext);
+  const stateLocation = useLocation();
 
   const navigate = useNavigate();
 
@@ -33,10 +34,12 @@ function ProductDetails() {
   const [selectedColor, setSelectedColor] = useState([]);
 
   useEffect(() => {
-    const fetchData = async (productId) => {
+    const fetchData = async () => {
       try {
         setIsLoading(true);
-        const findProduct = await getSingleProduct(productId);
+        const findProduct = await getSingleProduct(
+          stateLocation.state.data.productId
+        );
         setProduct(findProduct);
         setIsLoading(false);
       } catch (error) {
@@ -44,8 +47,8 @@ function ProductDetails() {
       }
     };
 
-    fetchData(productId);
-  }, [productId, setIsLoading, setError]);
+    fetchData();
+  }, [stateLocation, setIsLoading, setError]);
 
   const sizeOptions =
     product?.sizes.map((size) => ({
