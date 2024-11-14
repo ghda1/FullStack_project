@@ -3,6 +3,7 @@ import Products from "../components/products/Products";
 import { useNavigate } from "react-router-dom";
 import NavBar from "../components/layout/navbar/NavBar";
 import PageTitle from "../components/PageTitle";
+import homeImage from "/images/IMG_7918.JPG";
 
 function Home() {
   const navigate = useNavigate();
@@ -11,11 +12,7 @@ function Home() {
       <PageTitle title="Home" />
       <NavBar />
       <div className="hero-section">
-        <img
-          src="/images/IMG_7918.JPG"
-          alt="Home Page image"
-          className="hero-image"
-        />
+        <img src={homeImage} alt="Home Page image" className="hero-image" />
         <div className="hero-text">
           <h2>Welcome to TeeNest</h2>
           <p>
