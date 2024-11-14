@@ -5,11 +5,12 @@ import { jwtDecode } from "jwt-decode";
 import FormGroup from "../components/form/FormGroup";
 import FormButton from "../components/form/FormButton";
 import { UserContext } from "../contexts/UserContext";
-import { logInFields } from "../components/user/logInFields";
+
 import { logInUser } from "../services/userService";
 import FormError from "../components/form/FormError";
 import PageTitle from "../components/PageTitle";
 import { ClipLoader } from "react-spinners";
+import { logInFields } from "../components/user/logInFields";
 
 export default function Login() {
   const initialValue = {

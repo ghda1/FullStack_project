@@ -4,7 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import FormGroup from "../components/form/FormGroup";
 import FormButton from "../components/form/FormButton";
 import { addAddress } from "../services/addressService";
-import { addressFields } from "../components/address/addressFieldes";
+import { addressFields } from "../components/address/addressFields";
 import PageTitle from "../components/PageTitle";
 
 export default function AddressSignUp() {

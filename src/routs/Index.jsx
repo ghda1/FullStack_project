@@ -12,7 +12,7 @@ import Profile from "../pages/Profile";
 import UpdateProfile from "../pages/UpdateProfile";
 import Dashboard from "../pages/Dashboard";
 import ProtectRouteByAdmin from "./ProtectRouteByAdmin";
-import ManageProducts from "../components/ManageProduct";
+import ManageProducts from "../components/ManageProducts";
 import ManageUsers from "../components/ManageUsers";
 import ManageAddresses from "../components/ManageAddresses";
 import UpdateProduct from "../pages/UpdateProduct";
