@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import uploadImageToCloudinary from "../utility/UploadImageToCloudinary";
+import uploadImageToCloudinary from "../utility/uploadImageToCloudinary";
 import { UserContext } from "../contexts/UserContext";
 import FormButton from "../components/form/FormButton";
 import { SizeContext } from "../contexts/SizeContext";
@@ -11,7 +11,6 @@ import FormGroup from "../components/form/FormGroup";
 import FormSelectGroup from "../components/form/FormSelectGroup";
 import PageTitle from "../components/PageTitle";
 import { addProduct, getAllProducts } from "../services/productService";
-
 
 export default function AddProduct() {
   const initialValue = {
