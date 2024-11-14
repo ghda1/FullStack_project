@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { Card, Container } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
 
+import profileImage from "/images/personal-photo.png";
 import { UserContext } from "../contexts/UserContext";
 import { deleteUser, getSingleUser } from "../services/userService";
 import PageTitle from "../components/PageTitle";
@@ -75,7 +76,7 @@ function Profile() {
       <Card className="profileCard">
         <img
           className="profileImage"
-          src="../images/personal-photo.png"
+          src={profileImage}
           alt="profile picture"
         />
         <Card.Body className="profileInfo">
