@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import { Container } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
@@ -23,7 +23,6 @@ function ProductDetails() {
   const [errors, setErrors] = useState({});
 
   const { token } = useContext(UserContext);
-  const stateLocation = useLocation();
 
   const navigate = useNavigate();
 
@@ -37,9 +36,7 @@ function ProductDetails() {
     const fetchData = async () => {
       try {
         setIsLoading(true);
-        const findProduct = await getSingleProduct(
-          stateLocation.state.data.productId
-        );
+        const findProduct = await getSingleProduct(productId);
         setProduct(findProduct);
         setIsLoading(false);
       } catch (error) {
@@ -48,7 +45,7 @@ function ProductDetails() {
     };
 
     fetchData();
-  }, [stateLocation, setIsLoading, setError]);
+  }, [productId, setIsLoading, setError]);
 
   const sizeOptions =
     product?.sizes.map((size) => ({

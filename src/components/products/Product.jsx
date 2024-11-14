@@ -22,7 +22,7 @@ export default function Product(props) {
         <Button
           className="details-btn"
           variant="secondary"
-          onClick={() => navigate(`/productDetails`, { state: productId })}
+          onClick={() => navigate(`/productDetails/${productId}`)}
         >
           Details
         </Button>

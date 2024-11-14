@@ -1,4 +1,4 @@
-import { Link, Outlet, useNavigate } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import { useContext } from "react";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { Badge } from "@mui/material";
@@ -32,7 +32,9 @@ function NavBar() {
           <img className="logo" src={logo} title="logo" />
           <Link to="/">Home</Link>
           <Link to="/products">Products</Link>
-          {isLogIn && <Link to={(`/profile`, { state: userId })}>Profile</Link>}
+          {isLogIn && (
+            <Link to={(`/profile/${userId}`)}>Profile</Link>
+          )}
           {isLogIn && role === "Admin" && (
             <Link to="/dashboard">Dashboard</Link>
           )}

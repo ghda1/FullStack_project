@@ -12,11 +12,13 @@ export const getAllUsers = async (token) => {
 };
 
 export const getSingleUser = async (userId, token) => {
+  console.log(userId)
   const res = await axios(`${baseURL}/${userId}`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   });
+  console.log(res)
   return res.data.data;
 };
 

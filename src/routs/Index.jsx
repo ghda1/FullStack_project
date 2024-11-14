@@ -36,7 +36,7 @@ function Index() {
           element: <ListProduct />,
         },
         {
-          path: "/productDetails",
+          path: "/productDetails/:productId",
           element: <ProductDetails />,
         },
         {
@@ -60,7 +60,7 @@ function Index() {
           element: <ProtectRouteByLogIn />,
           children: [
             {
-              path: "/profile",
+              path: "/profile/:userId",
               element: <Profile />,
             },
             {

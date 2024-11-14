@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Card, Container } from "react-bootstrap";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 
 import profileImage from "/images/personal-photo.png";
 import { UserContext } from "../contexts/UserContext";
@@ -25,8 +25,7 @@ function Profile() {
   const userData = JSON.parse(localStorage.getItem("userData"));
 
   const token = userData.token;
-  const location = useLocation();
-  const userId = location.state.data.userId;
+  const { userId } = useParams();
 
   const fetchData = async (userId, token) => {
     try {

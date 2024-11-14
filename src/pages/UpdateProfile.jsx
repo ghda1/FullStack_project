@@ -28,7 +28,7 @@ function UpdateProfile() {
   const handleUpdateUserData = async (userId, updatedUser, token) => {
     await updateUser(userId, updatedUser, token);
     await getSingleUser(userId);
-    navigate(`/profile`);
+    navigate(`/profile/${userId}`);
   };
 
   const isValidateForm = () => {

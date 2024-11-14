@@ -12,6 +12,7 @@ import PageTitle from "../components/PageTitle";
 import { ClipLoader } from "react-spinners";
 import { logInFields } from "../components/user/logInFields";
 
+
 export default function Login() {
   const initialValue = {
     email: "",
