@@ -1,24 +1,24 @@
 import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import Layout from "../src/components/layout/Layout";
-import ProductDetails from "../src/pages/ProductDetails";
-import Signup from "../src/pages/Signup";
-import AddressSignUp from "../src/pages/AddressSignUp";
-import Login from "../src/pages/Login";
-import Cart from "../src/pages/Cart";
-import ProtectRouteByLogIn from "../routs/ProtectRouteByLogIn";
-import Profile from "../src/pages/Profile";
-import UpdateProfile from "../src/pages/UpdateProfile";
-import Dashboard from "../src/pages/Dashboard";
-import ProtectRouteByAdmin from "../routs/ProtectRouteByAdmin";
-import ManageProducts from "../src/components/ManageProduct";
-import ManageUsers from "../src/components/ManageUsers";
-import ManageAddresses from "../src/components/ManageAddresses";
-import UpdateProduct from "../src/pages/UpdateProduct";
-import AddProduct from "../src/pages/AddProduct";
-import ListProduct from "../src/pages/ListProduct";
-import Home from "../src/pages/Home";
+import Layout from "../components/layout/Layout";
+import ProductDetails from "../pages/ProductDetails";
+import Signup from "../pages/Signup";
+import AddressSignUp from "../pages/AddressSignUp";
+import Login from "../pages/Login";
+import Cart from "../pages/Cart";
+import ProtectRouteByLogIn from "./ProtectRouteByLogIn";
+import Profile from "../pages/Profile";
+import UpdateProfile from "../pages/UpdateProfile";
+import Dashboard from "../pages/Dashboard";
+import ProtectRouteByAdmin from "./ProtectRouteByAdmin";
+import ManageProducts from "../components/ManageProduct";
+import ManageUsers from "../components/ManageUsers";
+import ManageAddresses from "../components/ManageAddresses";
+import UpdateProduct from "../pages/UpdateProduct";
+import AddProduct from "../pages/AddProduct";
+import ListProduct from "../pages/ListProduct";
+import Home from "../pages/Home";
 
 function Index() {
   const router = createBrowserRouter([

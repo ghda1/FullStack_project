@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import { Outlet } from "react-router-dom";
 
-import { UserContext } from "../src/contexts/UserContext";
-import Home from "../src/pages/Home";
+import { UserContext } from "../contexts/UserContext";
+import Home from "../pages/Home";
 
 function ProtectRouteByLogIn() {
   const { isLogIn } = useContext(UserContext);
