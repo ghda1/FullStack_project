@@ -32,7 +32,7 @@ function NavBar() {
           <img className="logo" src={logo} title="logo" />
           <Link to="/">Home</Link>
           <Link to="/products">Products</Link>
-          {isLogIn && <Link to={`/profile/${userId}`}>Profile</Link>}
+          {isLogIn && <Link to={`/profile`}>Profile</Link>}
           {isLogIn && role === "Admin" && (
             <Link to="/dashboard">Dashboard</Link>
           )}
