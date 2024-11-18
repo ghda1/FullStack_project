@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import FormGroup from "../components/form/FormGroup";
@@ -6,7 +6,6 @@ import FormButton from "../components/form/FormButton";
 import { addAddress } from "../services/addressService";
 import { addressFields } from "../components/address/addressFields";
 import PageTitle from "../components/PageTitle";
-import { UserContext } from "../contexts/UserContext";
 import { ClipLoader } from "react-spinners";
 
 export default function AddressSignUp() {
@@ -29,7 +28,7 @@ export default function AddressSignUp() {
 
   const [address, setAddress] = useState(initialValue);
   const [errors, setErrors] = useState({});
-  const { setIsLoading, isLoading } = useContext(UserContext);
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleChange = (event) => {

@@ -12,7 +12,6 @@ import PageTitle from "../components/PageTitle";
 import { ClipLoader } from "react-spinners";
 import { logInFields } from "../components/user/logInFields";
 
-
 export default function Login() {
   const initialValue = {
     email: "",
@@ -21,8 +20,8 @@ export default function Login() {
 
   const [user, setUser] = useState(initialValue);
   const [errors, setErrors] = useState({});
-  const { setLogIn, setIsLoading, isLoading, setToken, setUserLoggedIn } =
-    useContext(UserContext);
+  const { setLogIn, setToken, setUserLoggedIn } = useContext(UserContext);
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   const override = {
