@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { signUpFields } from "../components/user/signUpFields";
@@ -6,6 +6,8 @@ import FormGroup from "../components/form/FormGroup";
 import FormButton from "../components/form/FormButton";
 import { registerUser } from "../services/userService";
 import PageTitle from "../components/PageTitle";
+import { UserContext } from "../contexts/UserContext";
+import { ClipLoader } from "react-spinners";
 
 export default function Signup() {
   const initialValue = {
@@ -16,9 +18,15 @@ export default function Signup() {
     phone: "",
     isAdmin: false,
   };
+  const override = {
+    display: "block",
+    margin: "1rem",
+    borderColor: "black",
+  };
 
   const [user, setUser] = useState(initialValue);
   const [errors, setErrors] = useState({});
+  const { setIsLoading, isLoading } = useContext(UserContext);
   const navigate = useNavigate();
 
   const handleChange = (event) => {
@@ -62,6 +70,7 @@ export default function Signup() {
     event.preventDefault();
 
     if (isValidateForm()) {
+      setIsLoading(true);
       const newUser = {
         firstName: user.firstName,
         lastName: user.lastName,
@@ -71,6 +80,7 @@ export default function Signup() {
         isAdmin: false,
       };
       const res = await handelAddUser(newUser);
+      setIsLoading(false);
       restValues();
       navigate("/addressInfo", { state: res });
     }
@@ -97,6 +107,17 @@ export default function Signup() {
           );
         })}
         <FormButton type="submit">Sign Up</FormButton>
+        {isLoading && (
+          <ClipLoader
+            color="#000000"
+            loading={isLoading}
+            cssOverride={override}
+            size={35}
+            aria-label="Loading Spinner"
+            data-testid="loader"
+            speedMultiplier
+          />
+        )}
       </form>
     </div>
   );

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import FormGroup from "../components/form/FormGroup";
@@ -6,6 +6,8 @@ import FormButton from "../components/form/FormButton";
 import { addAddress } from "../services/addressService";
 import { addressFields } from "../components/address/addressFields";
 import PageTitle from "../components/PageTitle";
+import { UserContext } from "../contexts/UserContext";
+import { ClipLoader } from "react-spinners";
 
 export default function AddressSignUp() {
   const userIdState = useLocation();
@@ -19,8 +21,15 @@ export default function AddressSignUp() {
     userId: userIdState.state.data.userId,
   };
 
+  const override = {
+    display: "block",
+    margin: "1rem",
+    borderColor: "black",
+  };
+
   const [address, setAddress] = useState(initialValue);
   const [errors, setErrors] = useState({});
+  const { setIsLoading, isLoading } = useContext(UserContext);
   const navigate = useNavigate();
 
   const handleChange = (event) => {
@@ -68,6 +77,7 @@ export default function AddressSignUp() {
     event.preventDefault();
 
     if (isValidateForm()) {
+      setIsLoading(true);
       const newAddress = {
         addressName: address.addressName,
         streetNumber: address.streetNumber,
@@ -77,6 +87,7 @@ export default function AddressSignUp() {
         userId: userIdState.state.data.userId,
       };
       handelAddAddress(newAddress);
+      setIsLoading(false);
       restValues();
       navigate("/login");
     }
@@ -102,6 +113,17 @@ export default function AddressSignUp() {
           );
         })}
         <FormButton type="submit">Add</FormButton>
+        {isLoading && (
+          <ClipLoader
+            color="#000000"
+            loading={isLoading}
+            cssOverride={override}
+            size={35}
+            aria-label="Loading Spinner"
+            data-testid="loader"
+            speedMultiplier
+          />
+        )}
       </form>
     </div>
   );
