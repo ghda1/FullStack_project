@@ -142,7 +142,7 @@ const Cart = () => {
             {productCart.length > 0 ? (
               <button
                 className="payment-btn"
-                onClick={() => handlePaymentClick}
+                onClick={() => handlePaymentClick()}
               >
                 Complate to Payment
               </button>
