@@ -47,7 +47,9 @@ const Cart = () => {
   };
 
   const handlePaymentClick = () => {
-    if (isLogIn) navigate("/");
+    if (isLogIn) {
+      navigate("/");
+    }
     navigate("/login");
   };
 
