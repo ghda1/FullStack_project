@@ -17,8 +17,12 @@ import { useNavigate } from "react-router-dom";
 import { UserContext } from "../contexts/UserContext";
 
 const Cart = () => {
-  const { productCart, removeProductFromCart, updateProductQuantity } =
-    useContext(CartContext);
+  const {
+    productCart,
+    removeProductFromCart,
+    removeCartFromLocalStorage,
+    updateProductQuantity,
+  } = useContext(CartContext);
 
   const { isLogIn } = useContext(UserContext);
 
@@ -44,6 +48,11 @@ const Cart = () => {
       product.productId,
       isNaN(newQuantity) ? 1 : newQuantity
     );
+  };
+
+  const handleClearCart = () => {
+    removeCartFromLocalStorage();
+    navigate("/products");
   };
 
   const handlePaymentClick = () => {
@@ -143,12 +152,20 @@ const Cart = () => {
               {productCart.length > 0 ? `Total Price: ${totalPrice}` : ""}
             </MDBTypography>
             {productCart.length > 0 ? (
-              <button
-                className="payment-btn"
-                onClick={() => handlePaymentClick()}
-              >
-                Complate to Payment
-              </button>
+              <div>
+                <button
+                  className="payment-btn"
+                  onClick={() => handleClearCart()}
+                >
+                  Clear Cart
+                </button>
+                <button
+                  className="payment-btn"
+                  onClick={() => handlePaymentClick()}
+                >
+                  Complate to Payment
+                </button>
+              </div>
             ) : (
               ""
             )}
