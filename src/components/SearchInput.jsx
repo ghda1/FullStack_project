@@ -15,7 +15,7 @@ function SearchInput({ setSearchQuery }) {
         className="search"
         type="text"
         id="search-task"
-        placeholder="Search for product.."
+        placeholder="Search..."
         onChange={handleSearching}
       />
     </div>

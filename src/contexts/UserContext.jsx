@@ -11,6 +11,12 @@ export const UserProvider = ({ children }) => {
   const [error, setError] = useState(null);
 
   const [isLogIn, setLogIn] = useState((userData && userData.isLogIn) || false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [pageNumber, setPagaeNumber] = useState(1);
+  const [pageSize, setPageSize] = useState(8);
+  const [totalPages, setTotalPages] = useState();
+  const [sortBy, setSortBy] = useState("firstname");
+  const [sortOrder, setSortOrder] = useState("asc");
   const [token, setToken] = useState((userData && userData.token) || null);
   const [userLoggedIn, setUserLoggedIn] = useState(
     (userData && userData.userData) || null
@@ -40,6 +46,18 @@ export const UserProvider = ({ children }) => {
         setLogIn,
         token,
         setToken,
+        searchQuery,
+        setSearchQuery,
+        pageNumber,
+        setPagaeNumber,
+        pageSize,
+        setPageSize,
+        totalPages,
+        setTotalPages,
+        sortBy,
+        setSortBy,
+        sortOrder,
+        setSortOrder,
         userLoggedIn,
         setUserLoggedIn,
         role,

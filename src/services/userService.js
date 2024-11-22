@@ -2,8 +2,29 @@ import axios from "axios";
 
 const baseURL = import.meta.env.VITE_BASE_USER_URL;
 
-export const getAllUsers = async (token) => {
-  const res = await axios(`${baseURL}`, {
+export const getAllUsers = async (
+  token,
+  pageNumber = 1,
+  pageSize = 8,
+  searchQuery = "",
+  sortBy = "firstname",
+  sortOrder = "asc"
+) => {
+  const params = new URLSearchParams();
+
+  params.append("pageNumber", pageNumber);
+  params.append("pageSize", pageSize);
+
+  if (searchQuery) {
+    params.append("searchQuery", searchQuery);
+  }
+  if (sortBy) {
+    params.append("sortBy", sortBy);
+  }
+  if (sortOrder) {
+    params.append("sortOrder", sortOrder);
+  }
+  const res = await axios(`${baseURL}?${params.toString()}`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -12,13 +33,11 @@ export const getAllUsers = async (token) => {
 };
 
 export const getSingleUser = async (userId, token) => {
-  console.log(userId)
   const res = await axios(`${baseURL}/${userId}`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   });
-  console.log(res)
   return res.data.data;
 };
 
