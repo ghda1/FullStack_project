@@ -3,6 +3,8 @@ import { Table } from "react-bootstrap";
 
 import { AddressContext } from "../contexts/AddressContext";
 import { deleteAddress, getAllAddresses } from "../services/addressService";
+import PaginationComponent from "./PaginationComponent";
+import SearchInput from "./SearchInput";
 
 function ManageAddresses() {
   const {
@@ -13,13 +15,40 @@ function ManageAddresses() {
     error,
     setError,
     token,
+    searchQuery,
+    setSearchQuery,
+    pageNumber,
+    setPagaeNumber,
+    pageSize,
+    setPageSize,
+    totalPages,
+    setTotalPages,
+    sortBy,
+    sortOrder,
   } = useContext(AddressContext);
 
-  const fetchData = async (token) => {
+  const fetchData = async (
+    token,
+    pageNumber,
+    pageSize,
+    searchQuery,
+    sortBy,
+    sortOrder
+  ) => {
     try {
       setIsLoading(true);
-      const addressData = await getAllAddresses(token);
-      setAddresses(addressData);
+      const addressData = await getAllAddresses(
+        token,
+        pageNumber,
+        pageSize,
+        searchQuery,
+        sortBy,
+        sortOrder
+      );
+      setPagaeNumber(addressData.pageNumber);
+      setPageSize(addressData.pageSize);
+      setTotalPages(addressData.totalPages);
+      setAddresses(addressData.items);
       setIsLoading(false);
     } catch (error) {
       setError(error);
@@ -27,15 +56,20 @@ function ManageAddresses() {
   };
 
   useEffect(() => {
-    fetchData(token);
-  }, []);
-
-  console.log(addresses);
+    fetchData(token, pageNumber, pageSize, searchQuery, sortBy, sortOrder);
+  }, [pageNumber, pageSize, searchQuery, sortBy, sortOrder]);
 
   const handleDelteAddress = async (addressId, token) => {
     await deleteAddress(addressId, token);
-    const addresses = await getAllAddresses();
-    setAddresses(addresses);
+    const addresses = await getAllAddresses(
+      token,
+      pageNumber,
+      pageSize,
+      searchQuery,
+      sortBy,
+      sortOrder
+    );
+    setAddresses(addresses.items);
   };
 
   if (isLoading) {
@@ -53,6 +87,7 @@ function ManageAddresses() {
   return (
     <div className="dashboard-content">
       <h3>Manage Users Addresses</h3>
+      <SearchInput setSearchQuery={setSearchQuery} />
       <Table responsive>
         <thead>
           <tr>
@@ -100,6 +135,11 @@ function ManageAddresses() {
           })}
         </tbody>
       </Table>
+      <PaginationComponent
+        pageNumber={pageNumber}
+        setPagaeNumber={setPagaeNumber}
+        totalPages={totalPages}
+      />
     </div>
   );
 }
